@@ -10,7 +10,7 @@ function App() {
     <div className="container">
       <Header>
         <Logo />
-        <Button type="primary" styles="margin-right: 10px">
+        <Button type="primary" styles="margin-right: 10px; margin-left: 30px;">
           Добавить товар
         </Button>
         <Button type="primary">Добавить категорию</Button>
