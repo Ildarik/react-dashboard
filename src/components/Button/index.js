@@ -19,6 +19,4 @@ const Button = styled.button`
   ${({ type }) => handleType(type)};
 `;
 
-export default ({ type, children }) => {
-  return <Button type={type}>{children}</Button>;
-};
+export default ({ type, children }) => <Button type={type}>{children}</Button>;
