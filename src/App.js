@@ -3,6 +3,7 @@ import "./App.css";
 import Button from "./components/Button";
 import Header from "./components/Header";
 import Logo from "./components/Logo";
+import DataGrid from "./components/DataGrid";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Button type="primary">Добавить товар</Button>
         <Button type="primary">Добавить категорию</Button>
       </Header>
+      <DataGrid />
     </div>
   );
 }
