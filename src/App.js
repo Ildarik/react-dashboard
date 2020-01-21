@@ -1,22 +1,17 @@
 import React from "react";
 import "./App.css";
 import Button from "./components/Button";
-import styled from "styled-components";
-import logo from "./logo.svg";
-
-
-const Logo = styled.img`
-  height: 20vmin;
-`;
+import Header from "./components/Header";
+import Logo from "./components/Logo";
 
 function App() {
   return (
     <div className="container">
-        <Logo src={logo} />
+      <Header>
+        <Logo />
         <Button type="primary">Добавить товар</Button>
-        <Button>Добавить категорию</Button>
-        <Button type="danger">Удалить</Button>
-      </header>
+        <Button type="primary">Добавить категорию</Button>
+      </Header>
     </div>
   );
 }
