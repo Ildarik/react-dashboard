@@ -10,7 +10,7 @@ function App() {
     <div className="container">
       <Header>
         <Logo />
-        <Button type="primary">Добавить товар</Button>
+        <Button type="primary" className="mr1" >Добавить товар</Button>
         <Button type="primary">Добавить категорию</Button>
       </Header>
       <DataGrid />

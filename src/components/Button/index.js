@@ -15,8 +15,14 @@ const Button = styled.button`
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
-  margin-right: 5px;
+  margin-right: ${({ mr }) => mr.slice(2)}em;
   ${({ type }) => handleType(type)};
 `;
 
-export default ({ type, children }) => <Button type={type}>{children}</Button>;
+export default ({ type, children, className }) => {
+  return (
+    <Button type={type} mr={className}>
+      {children}
+    </Button>
+  );
+};
