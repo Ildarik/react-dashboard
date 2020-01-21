@@ -15,6 +15,7 @@ const Button = styled.button`
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
+  margin-right: 5px;
   ${({ type }) => handleType(type)};
 `;
 
