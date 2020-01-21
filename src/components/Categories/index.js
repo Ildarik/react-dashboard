@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import mock from "../../mock";
-import logo from "./close.svg";
+import closeIcon from "./close.svg";
 
 const Category = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const Category = styled.div`
   margin: 1em 0;
 `;
 
-const Wrapper = styled.aside`
+const Wrapper = styled.div`
   margin-top: 40px;
   margin-left: 40px;
 `;
@@ -22,11 +22,9 @@ const ClearCategory = styled.img`
 export default () => (
   <Wrapper>
     {mock.map(product => (
-      <>
-        <Category>
-          <ClearCategory src={logo} /> {product.category}
-        </Category>
-      </>
+      <Category>
+        <ClearCategory src={closeIcon} /> {product.category}
+      </Category>
     ))}
   </Wrapper>
 );
