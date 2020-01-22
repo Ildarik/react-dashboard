@@ -7,11 +7,13 @@ const Category = styled.div`
   display: flex;
   align-items: center;
   margin: 1em 0;
+  color: blue;
+  text-decoration: underline;
 `;
 
 const Wrapper = styled.div`
   margin-top: 40px;
-  margin-left: 40px;
+  margin: 0 20px;
 `;
 
 const ClearCategory = styled.img`
