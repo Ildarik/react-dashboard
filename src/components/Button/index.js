@@ -15,9 +15,7 @@ const Button = styled.button`
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
-  transition-delay: 0s;
-  transition-duration: 0.3s;
-  transition-property: all;
+  transition: all 0.3s 0s;
   
   &:hover {
     opacity: 0.5;

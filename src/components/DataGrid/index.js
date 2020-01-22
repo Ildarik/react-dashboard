@@ -30,9 +30,7 @@ const Row = styled.div`
   display: flex;
   border-bottom: 1px solid rgb(232, 232, 232);
   line-height: 30px;
-  transition-delay: 0s;
-  transition-duration: 0.3s;
-  transition-property: all;
+  transition: all 0.3s 0s;
 
   &:hover {
     background: rgb(230, 247, 255);
