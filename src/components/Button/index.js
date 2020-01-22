@@ -15,6 +15,10 @@ const Button = styled.button`
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
+
+  &:hover {
+    opacity: 0.5;
+  }
   ${({ styles }) => styles};
   ${({ type }) => handleType(type)};
 `;
