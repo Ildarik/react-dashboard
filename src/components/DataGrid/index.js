@@ -15,7 +15,8 @@ const Table = styled.div`
 `;
 
 const Cell = styled.div`
-  margin: 0.5em 1em;
+  padding: 0.5em;
+  width: ${props => (props.small ? "20px" : "80px")};
 `;
 
 const Header = styled.div`
@@ -25,7 +26,6 @@ const Header = styled.div`
 
 const Row = styled.div`
   display: flex;
-  margin: 1em 0;
 `;
 
 export default () => {
@@ -35,7 +35,7 @@ export default () => {
         <Categories />
         <Table>
           <Header>
-            <Cell>ID</Cell>
+            <Cell small>ID</Cell>
             <Cell>Название</Cell>
             <Cell>Закупка</Cell>
             <Cell>Продажа</Cell>
@@ -44,7 +44,7 @@ export default () => {
           {mock.map(product => {
             return (
               <Row>
-                <Cell>{product.id}</Cell>
+                <Cell small>{product.id}</Cell>
                 <Cell>{product.name}</Cell>
                 <Cell>{product.price}</Cell>
                 <Cell>{product.sell}</Cell>
