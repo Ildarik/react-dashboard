@@ -11,21 +11,32 @@ const DataGrid = styled.div`
 const Table = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 24px;
+  margin-left: 40px;
 `;
 
 const Cell = styled.div`
   padding: 12px;
-  width: ${props => (props.small ? "20px" : "80px")};
+  width: ${props => (props.small ? "40px" : "120px")};
+  vertical-align: middle;
 `;
 
 const Header = styled.div`
   display: flex;
-  font-weight: bold;
+  border-bottom: 1px solid rgb(232, 232, 232);
+  background-color: rgb(250, 250, 250);
 `;
 
 const Row = styled.div`
   display: flex;
+  border-bottom: 1px solid rgb(232, 232, 232);
+  line-height: 30px;
+  transition-delay: 0s;
+  transition-duration: 0.3s;
+  transition-property: all;
+
+  &:hover {
+    background: rgb(230, 247, 255);
+  }
 `;
 
 export default () => {

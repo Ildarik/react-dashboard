@@ -18,6 +18,7 @@ const Button = styled.button`
   transition-delay: 0s;
   transition-duration: 0.3s;
   transition-property: all;
+  
   &:hover {
     opacity: 0.5;
   }
