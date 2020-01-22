@@ -11,11 +11,11 @@ const DataGrid = styled.div`
 const Table = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 2em;
+  margin-left: 24px;
 `;
 
 const Cell = styled.div`
-  padding: 0.5em;
+  padding: 12px;
   width: ${props => (props.small ? "20px" : "80px")};
 `;
 
