@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
-import ClickOutside from "./ClickOutside";
+import ClickOutside from "../ClickOutside";
 
 const Modal = styled.div`
   width: 400px;
