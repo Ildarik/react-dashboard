@@ -9,6 +9,7 @@ const Category = styled.div`
   margin: 1em 0;
   color: blue;
   text-decoration: underline;
+  cursor: pointer;
 `;
 
 const Wrapper = styled.div`

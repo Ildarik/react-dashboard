@@ -16,7 +16,8 @@ const Button = styled.button`
   border: none;
   border-radius: 4px;
   transition: all 0.3s 0s;
-  
+  cursor: pointer;
+
   &:hover {
     opacity: 0.5;
   }
