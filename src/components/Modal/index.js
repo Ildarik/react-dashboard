@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
+import ClickOutside from "./ClickOutside";
 
 const Modal = styled.div`
   width: 400px;
@@ -14,8 +15,7 @@ const Modal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  visibility: ${({ show }) => (show ? "visible" : "hidden")};
-  display: flex;
+  display: ${({ show }) => (show ? "flex" : "none")};
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -31,13 +31,13 @@ const CloseIcon = styled.img`
   margin-right: 5px;
 `;
 
-// onclick outside feature
-
 export default ({ show, children }) => {
   return (
-    <Modal show={show}>
-      <CloseIcon src={closeIcon} />
-      {children}
-    </Modal>
+    <ClickOutside onClickOutside={() => console.log("Hello from outside!")}>
+      <Modal show={show}>
+        <CloseIcon src={closeIcon} />
+        {children}
+      </Modal>
+    </ClickOutside>
   );
 };
