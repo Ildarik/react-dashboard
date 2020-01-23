@@ -13,10 +13,16 @@ const Modal = styled.div`
   transform: translate(-50%, -50%);
   padding: 20px;
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  text-align: center;
 `;
 
 // onclick outside feature
 
-export default ({show}) => {
-  return <Modal show={show} />;
+export default ({ show, children }) => {
+  return <Modal show={show}>{children}</Modal>;
 };
