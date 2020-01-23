@@ -24,8 +24,8 @@ const ClearCategory = styled.img`
 
 export default () => (
   <Wrapper>
-    {mock.map(product => (
-      <Category>
+    {mock.map((product, index) => (
+      <Category key={index}>
         <ClearCategory src={closeIcon} /> {product.category}
       </Category>
     ))}

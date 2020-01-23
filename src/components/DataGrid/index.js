@@ -50,22 +50,20 @@ export default () => {
             <Cell>Продажа</Cell>
           </Header>
 
-          {mock.map(product => {
-            return (
-              <Row>
-                <Cell small>{product.id}</Cell>
-                <Cell>{product.name}</Cell>
-                <Cell>{product.price}</Cell>
-                <Cell>{product.sell}</Cell>
-                <Cell>
-                  <Button type="danger">Удалить</Button>
-                </Cell>
-                <Cell>
-                  <Button>Изменить</Button>
-                </Cell>
-              </Row>
-            );
-          })}
+          {mock.map(product => (
+            <Row key={product.id}>
+              <Cell small>{product.id}</Cell>
+              <Cell>{product.name}</Cell>
+              <Cell>{product.price}</Cell>
+              <Cell>{product.sell}</Cell>
+              <Cell>
+                <Button type="danger">Удалить</Button>
+              </Cell>
+              <Cell>
+                <Button>Изменить</Button>
+              </Cell>
+            </Row>
+          ))}
         </Table>
       </DataGrid>
     </>
