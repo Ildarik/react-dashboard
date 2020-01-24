@@ -3,7 +3,8 @@ import styled from "styled-components";
 import logo from "./logo.svg";
 
 const Logo = styled.img`
-  height: 20vmin;
+  height: 150px;
+  margin-left: -20px;
 `;
 
 export default () => {

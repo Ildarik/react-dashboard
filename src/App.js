@@ -16,7 +16,7 @@ export default () => {
         <Button
           onClick={() => setShowModal(!showModal)}
           type="primary"
-          styles="margin-right: 10px; margin-left: 30px;"
+          styles="margin: 0 10px;"
         >
           Add product
         </Button>
