@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Logo from "./components/Logo";
 import DataGrid from "./components/DataGrid";
 import Modal from "./components/Modal";
+import styled from "styled-components";
 
 export default () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,19 +19,19 @@ export default () => {
           type="primary"
           styles="margin-right: 10px; margin-left: 30px;"
         >
-          Добавить товар
+          Add product
         </Button>
-        <Button type="primary">Добавить категорию</Button>
+        <Button type="primary">Add category</Button>
       </Header>
       <DataGrid />
       <Modal show={showModal}>
-        <h2>Хотите удалить категорию?</h2>
-        <p>Все товары в этой категории будут помечены "Без категории"</p>
+        <h2>Do you want to remove category?</h2>
+        <p>All products will be marked as "No category"</p>
         <div>
           <Button type="primary" styles={"min-width: 50px; margin-right: 10px"}>
-            Да
+            Yes
           </Button>
-          <Button styles={"min-width: 50px"}>Нет</Button>
+          <Button styles={"min-width: 50px"}>No</Button>
         </div>
       </Modal>
     </div>

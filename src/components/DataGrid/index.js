@@ -57,10 +57,10 @@ export default () => {
               <Cell>{product.price}</Cell>
               <Cell>{product.sell}</Cell>
               <Cell>
-                <Button type="danger">Удалить</Button>
+                <Button type="danger">Remove</Button>
               </Cell>
               <Cell>
-                <Button>Изменить</Button>
+                <Button>Edit</Button>
               </Cell>
             </Row>
           ))}

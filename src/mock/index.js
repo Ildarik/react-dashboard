@@ -1,29 +1,29 @@
 export default [
   {
     id: "1",
-    name: "Товар 1",
-    category: "Категория 1",
+    name: "Product 1",
+    category: "Category 1",
     price: "2200",
     sell: "2500"
   },
   {
     id: "2",
-    name: "Товар 2",
-    category: "Категория 2",
+    name: "Product 2",
+    category: "Category 2",
     price: "2200",
     sell: "2500"
   },
   {
     id: "3",
-    name: "Товар 3",
-    category: "Категория 3",
+    name: "Product 3",
+    category: "Category 3",
     price: "2200",
     sell: "2500"
   },
   {
     id: "4",
-    name: "Товар 1",
-    category: "Без категории",
+    name: "Product 4",
+    category: "No category",
     price: "2200",
     sell: "2500"
   }
