@@ -24,7 +24,7 @@ const Header = styled.div`
   display: flex;
   border-bottom: 1px solid rgb(232, 232, 232);
   background-color: rgb(250, 250, 250);
-  padding: 6px;
+  padding: 6px 0;
 `;
 
 const Row = styled.div`
