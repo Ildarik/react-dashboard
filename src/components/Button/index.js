@@ -12,7 +12,7 @@ const handleType = type => {
   }
 };
 const Button = styled.button`
-  padding: 8px 12px;
+  padding: 6px 12px;
   border: none;
   border-radius: 4px;
   transition: all 0.3s 0s;

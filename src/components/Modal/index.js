@@ -28,7 +28,7 @@ const CloseIcon = styled.img`
   top: 18px;
   right: 10px;
   width: 16px;
-  margin-right: 5px;
+  margin-right: 6px;
 
   &:hover {
     cursor: pointer;
@@ -47,7 +47,7 @@ const Mask = styled.div`
 `;
 
 const ModalHeader = styled.div`
-  padding: 16px 24px;
+  padding: 12px 24px;
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
   border-radius: 4px 4px 0 0;
@@ -62,7 +62,7 @@ const ModalBody = styled.div`
 
 const ModalFooter = styled.div`
   margin-top: auto;
-  padding: 10px 16px;
+  padding: 12px 16px;
   text-align: right;
   background: transparent;
   border-top: 1px solid #e8e8e8;

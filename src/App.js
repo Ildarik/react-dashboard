@@ -31,7 +31,7 @@ export default () => {
         <Button
           onClick={() => setModalType(addProduct)}
           type="primary"
-          styles="margin: 0 10px;"
+          styles="margin: 0 12px;"
         >
           Add product
         </Button>

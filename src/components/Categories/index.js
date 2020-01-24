@@ -10,18 +10,18 @@ const Category = styled.div`
   color: blue;
   text-decoration: underline;
   cursor: pointer;
-  padding: 5px 0;
+  padding: 4px 0;
 `;
 
 const Wrapper = styled.div`
   margin-top: 40px;
   margin: 0 20px;
-  padding-top: 37px;
+  padding-top: 36px;
 `;
 
 const ClearCategory = styled.img`
   width: 18px;
-  margin-right: 5px;
+  margin-right: 6px;
 `;
 
 export default () => (
