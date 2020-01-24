@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
 import ClickOutside from "../ClickOutside";
+import Button from "../Button";
 
 const Modal = styled.div`
   background-clip: padding-box;
@@ -18,6 +19,9 @@ const Modal = styled.div`
   transform: translate(-50%, -50%);
   display: ${({ show }) => (show ? "flex" : "none")};
   flex-direction: column;
+  z-index: 1000;
+  overflow: auto;
+  outline: 0;
 `;
 
 const CloseIcon = styled.img`
@@ -28,13 +32,76 @@ const CloseIcon = styled.img`
   margin-right: 5px;
 `;
 
-export default ({ show, children }) => {
+const Mask = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+`;
+
+const ModalHeader = styled.div`
+  padding: 16px 24px;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 4px 4px 0 0;
+`;
+
+const ModalBody = styled.div`
+  padding: 24px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+`;
+
+const ModalFooter = styled.div`
+  margin-top: auto;
+  padding: 10px 16px;
+  text-align: right;
+  background: transparent;
+  border-top: 1px solid #e8e8e8;
+  border-radius: 0 0 4px 4px;
+`;
+
+export default ({ showModal, modalHeader, modalBody }) => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (showModal) {
+      setShow(!show);
+    }
+  }, [showModal]);
+
   return (
-    <ClickOutside onClickOutside={() => console.log("Hello from outside!")}>
-      <Modal show={show}>
-        <CloseIcon src={closeIcon} />
-        {children}
-      </Modal>
-    </ClickOutside>
+    <>
+      {show && (
+        <>
+          <Mask />
+          <ClickOutside
+            onClickOutside={() => console.log("Hello from outside!")}
+          >
+            <Modal show={show}>
+              <CloseIcon src={closeIcon} onClick={() => setShow(!show)} />
+              <ModalHeader>{modalHeader}</ModalHeader>
+              <ModalBody>{modalBody}</ModalBody>
+              {/* TODO fix this - get from props */}
+              <ModalFooter>
+                <Button
+                  styles="margin-right: 10px"
+                  // TODO remove dublicate code
+                  onClick={() => setShow(!show)}
+                >
+                  Cancel
+                </Button>
+                <Button type="primary">OK</Button>
+              </ModalFooter>
+            </Modal>
+          </ClickOutside>
+        </>
+      )}
+    </>
   );
 };
