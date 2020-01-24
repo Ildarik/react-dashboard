@@ -30,6 +30,10 @@ const CloseIcon = styled.img`
   right: 10px;
   width: 16px;
   margin-right: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Mask = styled.div`
