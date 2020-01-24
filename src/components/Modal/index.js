@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
 import ClickOutside from "../ClickOutside";
-import Button from "../Button";
 
 const Modal = styled.div`
   background-clip: padding-box;
@@ -17,7 +16,7 @@ const Modal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: ${({ show }) => (show ? "flex" : "none")};
+  display: ${show => (show ? "flex" : "none")};
   flex-direction: column;
   z-index: 1000;
   overflow: auto;
@@ -70,14 +69,16 @@ const ModalFooter = styled.div`
   border-radius: 0 0 4px 4px;
 `;
 
-export default ({ showModal, modalHeader, modalBody }) => {
+export default props => {
   const [show, setShow] = useState(false);
 
+  const { modalHeader, modalBody, modalFooter } = props;
+
   useEffect(() => {
-    if (showModal) {
+    if (Object.entries(props).length) {
       setShow(show => !show);
     }
-  }, [showModal]);
+  }, [props]);
 
   return (
     <>
@@ -85,21 +86,11 @@ export default ({ showModal, modalHeader, modalBody }) => {
         <>
           <Mask />
           <ClickOutside onClickOutside={() => setShow(!show)}>
-            <Modal show={show}>
+            <Modal show={Object.entries(props).length}>
               <CloseIcon src={closeIcon} onClick={() => setShow(!show)} />
               <ModalHeader>{modalHeader}</ModalHeader>
               <ModalBody>{modalBody}</ModalBody>
-              {/* TODO fix this - get from props */}
-              <ModalFooter>
-                <Button
-                  styles="margin-right: 10px"
-                  // TODO remove dublicate code
-                  onClick={() => setShow(!show)}
-                >
-                  Cancel
-                </Button>
-                <Button type="primary">OK</Button>
-              </ModalFooter>
+              <ModalFooter>{modalFooter}</ModalFooter>
             </Modal>
           </ClickOutside>
         </>
