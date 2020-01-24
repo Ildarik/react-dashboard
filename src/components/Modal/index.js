@@ -4,30 +4,27 @@ import closeIcon from "./close.svg";
 import ClickOutside from "../ClickOutside";
 
 const Modal = styled.div`
-  width: 400px;
-  height: 300px;
-  background: white;
-  border: 1px solid orange;
-  border-radius: 5px;
-  box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+  min-width: 350px;
+  min-height: 250px;
+  background-color: #fff;
+  border: 0 solid rgba(0, 0, 0, 0.65);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
   display: ${({ show }) => (show ? "flex" : "none")};
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
-  text-align: center;
 `;
 
 const CloseIcon = styled.img`
   position: absolute;
-  top: 10px;
+  top: 18px;
   right: 10px;
-  width: 24px;
+  width: 16px;
   margin-right: 5px;
 `;
 
