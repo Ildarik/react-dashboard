@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const ClearCategory = styled.img`
-  width: 24px;
+  width: 18px;
   margin-right: 5px;
 `;
 
