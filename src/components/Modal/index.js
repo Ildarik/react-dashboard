@@ -84,9 +84,7 @@ export default ({ showModal, modalHeader, modalBody }) => {
       {show && (
         <>
           <Mask />
-          <ClickOutside
-            onClickOutside={() => console.log("Hello from outside!")}
-          >
+          <ClickOutside onClickOutside={() => setShow(!show)}>
             <Modal show={show}>
               <CloseIcon src={closeIcon} onClick={() => setShow(!show)} />
               <ModalHeader>{modalHeader}</ModalHeader>
