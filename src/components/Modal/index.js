@@ -71,7 +71,7 @@ export default ({ showModal, modalHeader, modalBody }) => {
 
   useEffect(() => {
     if (showModal) {
-      setShow(!show);
+      setShow(show => !show);
     }
   }, [showModal]);
 

@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import Logo from "./components/Logo";
 import DataGrid from "./components/DataGrid";
 import Modal from "./components/Modal";
-import styled from "styled-components";
 
 export default () => {
   const [showModal, setShowModal] = useState(false);
