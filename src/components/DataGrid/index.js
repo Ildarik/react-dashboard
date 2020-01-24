@@ -15,7 +15,7 @@ const Table = styled.div`
 `;
 
 const Cell = styled.div`
-  padding: 12px;
+  padding: 6px;
   width: ${props => (props.small ? "40px" : "120px")};
   vertical-align: middle;
 `;
@@ -24,6 +24,7 @@ const Header = styled.div`
   display: flex;
   border-bottom: 1px solid rgb(232, 232, 232);
   background-color: rgb(250, 250, 250);
+  padding: 6px;
 `;
 
 const Row = styled.div`

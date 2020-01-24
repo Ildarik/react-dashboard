@@ -10,13 +10,13 @@ const Category = styled.div`
   color: blue;
   text-decoration: underline;
   cursor: pointer;
-  padding: 4px 0;
+  padding: 5px 0;
 `;
 
 const Wrapper = styled.div`
   margin-top: 40px;
   margin: 0 20px;
-  padding-top: 26px;
+  padding-top: 37px;
 `;
 
 const ClearCategory = styled.img`
