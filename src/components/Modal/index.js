@@ -25,7 +25,7 @@ const Modal = styled.div`
 
 const CloseIcon = styled.img`
   position: absolute;
-  top: 18px;
+  top: 14px;
   right: 10px;
   width: 16px;
   margin-right: 6px;
