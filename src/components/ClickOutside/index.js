@@ -10,7 +10,7 @@ const ClickOutside = ({ onClickOutside, children }) => {
     return () => {
       document.removeEventListener("click", handleDocumentClick);
     };
-  }, []);
+  });
 
   const handleDocumentClick = e => {
     if (isClickedInside) {
