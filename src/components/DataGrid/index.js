@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Categories from "../Categories";
 import mock from "../../mock";
+import Modal from "../Modal";
+import useModal from "../../hooks/useModal";
 
 const DataGrid = styled.div`
   display: flex;
@@ -38,7 +40,43 @@ const Row = styled.div`
   }
 `;
 
+const nameInput = <input placeholder="Name"></input>;
+const footerSave = <Button type="primary">Save</Button>;
+const footerOkCancel = (
+  <>
+    <Button type="primary" styles="margin-right: 6px;">
+      Save
+    </Button>
+    <Button>Cancel</Button>
+  </>
+);
+
+const editProduct = {
+  modalHeader: "Edit product",
+  modalBody: nameInput,
+  modalFooter: footerSave
+};
+
+const removeCategory = {
+  modalHeader: "Do you want to remove category?",
+  modalBody: `All products will be marked as "No category"`,
+  modalFooter: footerOkCancel
+};
+
+const removeProduct = {
+  modalBody: "Do you want to remove product id = ?",
+  modalFooter: footerOkCancel
+};
+
 export default () => {
+  const [modalType, setModalType] = useState(null);
+  const { isShowing, toggle } = useModal();
+
+  const showModal = type => {
+    setModalType(type);
+    toggle();
+  };
+
   return (
     <>
       <DataGrid>
@@ -58,15 +96,16 @@ export default () => {
               <Cell>{product.price}</Cell>
               <Cell>{product.sell}</Cell>
               <Cell>
-                <Button type="danger">Remove</Button>
+                <Button type="danger" onClick={() => showModal(removeProduct)}>Remove</Button>
               </Cell>
               <Cell>
-                <Button>Edit</Button>
+                <Button onClick={() => showModal(editProduct)}>Edit</Button>
               </Cell>
             </Row>
           ))}
         </Table>
       </DataGrid>
+      <Modal {...modalType} isShowing={isShowing} hide={toggle} />
     </>
   );
 };
