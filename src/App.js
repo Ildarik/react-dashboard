@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Logo from "./components/Logo";
 import DataGrid from "./components/DataGrid";
 import Modal from "./components/Modal";
+import useModal from "./hooks/useModal";
 
 const nameInput = <input placeholder="Name"></input>;
 const footer = <Button type="primary">Save</Button>;
@@ -23,13 +24,17 @@ const addProduct = {
 
 export default () => {
   const [modalType, setModalType] = useState(null);
+  const { isShowing, toggle } = useModal();
 
   return (
     <div className="container">
       <Header>
         <Logo />
         <Button
-          onClick={() => setModalType(addProduct)}
+          onClick={() => {
+            setModalType(addProduct);
+            toggle();
+          }}
           type="primary"
           styles="margin: 0 12px;"
         >
@@ -38,6 +43,7 @@ export default () => {
         <Button
           onClick={() => {
             setModalType(addCategory);
+            toggle();
           }}
           type="primary"
         >
@@ -45,7 +51,7 @@ export default () => {
         </Button>
       </Header>
       <DataGrid />
-      <Modal {...modalType} />
+      <Modal {...modalType} isShowing={isShowing} hide={toggle} />
     </div>
   );
 };

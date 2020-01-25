@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
 import ClickOutside from "../ClickOutside";
@@ -16,7 +16,7 @@ const Modal = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: ${show => (show ? "flex" : "none")};
+  display: flex;
   flex-direction: column;
   z-index: 1000;
   overflow: auto;
@@ -70,24 +70,16 @@ const ModalFooter = styled.div`
 `;
 
 export default props => {
-  const [show, setShow] = useState(false);
-
-  const { modalHeader, modalBody, modalFooter } = props;
-
-  useEffect(() => {
-    if (Object.entries(props).length) {
-      setShow(show => !show);
-    }
-  }, [props]);
+  const { isShowing, hide, modalHeader, modalBody, modalFooter } = props;
 
   return (
     <>
-      {show && (
+      {isShowing && (
         <>
           <Mask />
-          <ClickOutside onClickOutside={() => setShow(!show)}>
-            <Modal show={Object.entries(props).length}>
-              <CloseIcon src={closeIcon} onClick={() => setShow(!show)} />
+          <ClickOutside onClickOutside={hide}>
+            <Modal>
+              <CloseIcon src={closeIcon} onClick={hide} />
               <ModalHeader>{modalHeader}</ModalHeader>
               <ModalBody>{modalBody}</ModalBody>
               <ModalFooter>{modalFooter}</ModalFooter>
