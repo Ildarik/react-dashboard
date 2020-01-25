@@ -46,9 +46,9 @@ export default () => {
         <Table>
           <Header>
             <Cell small>ID</Cell>
-            <Cell>Название</Cell>
-            <Cell>Закупка</Cell>
-            <Cell>Продажа</Cell>
+            <Cell>Name</Cell>
+            <Cell>Purchase</Cell>
+            <Cell>Sale</Cell>
           </Header>
 
           {mock.map(product => (
