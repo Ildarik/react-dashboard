@@ -8,18 +8,18 @@ import Modal from "./components/Modal";
 import useModal from "./hooks/useModal";
 
 const nameInput = <input placeholder="Name"></input>;
-const footer = <Button type="primary">Save</Button>;
+const footerSave = <Button type="primary">Save</Button>;
 
 const addCategory = {
   modalHeader: "Add category",
   modalBody: nameInput,
-  modalFooter: footer
+  modalFooter: footerSave
 };
 
 const addProduct = {
   modalHeader: "Add product",
   modalBody: nameInput,
-  modalFooter: footer
+  modalFooter: footerSave
 };
 
 export default () => {
