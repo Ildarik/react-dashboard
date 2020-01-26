@@ -44,6 +44,7 @@ const Mask = styled.div`
   z-index: 1000;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
 `;
 
 const ModalHeader = styled.div`
