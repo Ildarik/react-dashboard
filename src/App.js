@@ -46,7 +46,7 @@ export default () => {
           Add category
         </Button>
       </Header>
-      <DataGrid />
+      <DataGrid showModal={showModal} />
       <Modal {...modalType} isShowing={isShowing} hide={toggle} />
     </div>
   );

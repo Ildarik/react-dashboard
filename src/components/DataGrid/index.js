@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Categories from "../Categories";
 import mock from "../../mock";
-import Modal from "../Modal";
-import useModal from "../../hooks/useModal";
 
 const DataGrid = styled.div`
   display: flex;
@@ -68,15 +66,7 @@ const removeProduct = {
   modalFooter: footerOkCancel
 };
 
-export default () => {
-  const [modalType, setModalType] = useState(null);
-  const { isShowing, toggle } = useModal();
-
-  const showModal = type => {
-    setModalType(type);
-    toggle();
-  };
-
+export default ({ showModal }) => {
   return (
     <>
       <DataGrid>
@@ -96,7 +86,9 @@ export default () => {
               <Cell>{product.price}</Cell>
               <Cell>{product.sell}</Cell>
               <Cell>
-                <Button type="danger" onClick={() => showModal(removeProduct)}>Remove</Button>
+                <Button type="danger" onClick={() => showModal(removeProduct)}>
+                  Remove
+                </Button>
               </Cell>
               <Cell>
                 <Button onClick={() => showModal(editProduct)}>Edit</Button>
@@ -105,7 +97,6 @@ export default () => {
           ))}
         </Table>
       </DataGrid>
-      <Modal {...modalType} isShowing={isShowing} hide={toggle} />
     </>
   );
 };
