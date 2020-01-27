@@ -10,4 +10,4 @@
 
 
 Notes:
-- [Mind-map "Async operations in JS"] (https://mm.tt/1406095339?t=TcgVGdwpS1)
+- Mind-map [Async operations in JS](https://mm.tt/1406095339?t=TcgVGdwpS1)
