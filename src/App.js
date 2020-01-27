@@ -26,7 +26,7 @@ export default () => {
   const [modalType, setModalType] = useState(null);
   const { isShowing, toggle } = useModal();
 
-  const showModal = type => {
+  const showModal = type => () => {
     setModalType(type);
     toggle();
   };
@@ -36,13 +36,13 @@ export default () => {
       <Header>
         <Logo />
         <Button
-          onClick={() => showModal(addProduct)}
+          onClick={showModal(addProduct)}
           type="primary"
           styles="margin: 0 12px;"
         >
           Add product
         </Button>
-        <Button onClick={() => showModal(addCategory)} type="primary">
+        <Button onClick={showModal(addCategory)} type="primary">
           Add category
         </Button>
       </Header>

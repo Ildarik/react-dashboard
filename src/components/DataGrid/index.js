@@ -86,12 +86,12 @@ export default ({ showModal }) => {
               <Cell>{product.price}</Cell>
               <Cell>{product.sell}</Cell>
               <Cell>
-                <Button type="danger" onClick={() => showModal(removeProduct)}>
+                <Button type="danger" onClick={showModal(removeProduct)}>
                   Remove
                 </Button>
               </Cell>
               <Cell>
-                <Button onClick={() => showModal(editProduct)}>Edit</Button>
+                <Button onClick={showModal(editProduct)}>Edit</Button>
               </Cell>
             </Row>
           ))}
