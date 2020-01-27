@@ -5,5 +5,5 @@
 - No CSS framework (intentionally)
 - Inspired by and.design
 - 💅Styled-components
-- ![React logo](/src/images/react-icon.svg) <!-- .element height="20px" width="20px" --> React & Hooks
+- <img src="/src/images/react-icon.svg"  width="20" height="20">React & Hooks
 - ![Redux logo](/src/images/redux-logo.svg =20x20) Redux (coming soon...)
