@@ -6,17 +6,12 @@ import Logo from "./components/Logo";
 import DataGrid from "./components/DataGrid";
 import Modal from "./components/Modal";
 import useModal from "./hooks/useModal";
+import addProduct from "./components/Modals/addProduct";
 
 const nameInput = <input placeholder="Name"></input>;
 
 const addCategory = {
   modalHeader: "Add category",
-  modalBody: nameInput,
-  modalFooter: "Save"
-};
-
-const addProduct = {
-  modalHeader: "Add product",
   modalBody: nameInput,
   modalFooter: "Save"
 };
