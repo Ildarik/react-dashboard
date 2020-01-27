@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
 import ClickOutside from "../ClickOutside";
+import ModalFooter from "./ModalFooter";
 
 const Modal = styled.div`
   background-clip: padding-box;
@@ -61,14 +62,6 @@ const ModalBody = styled.div`
   color: rgba(0, 0, 0, 0.65);
 `;
 
-const ModalFooter = styled.div`
-  margin-top: auto;
-  padding: 12px 16px;
-  text-align: right;
-  background: transparent;
-  border-top: 1px solid #e8e8e8;
-  border-radius: 0 0 4px 4px;
-`;
 
 export default props => {
   const { isShowing, hide, modalHeader, modalBody, modalFooter } = props;
@@ -83,7 +76,7 @@ export default props => {
               <CloseIcon src={closeIcon} onClick={hide} />
               <ModalHeader>{modalHeader}</ModalHeader>
               <ModalBody>{modalBody}</ModalBody>
-              <ModalFooter>{modalFooter}</ModalFooter>
+              <ModalFooter modalFooter={modalFooter} />
             </Modal>
           </ClickOutside>
         </>

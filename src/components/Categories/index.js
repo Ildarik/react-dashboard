@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import mock from "../../mock";
 import closeIcon from "./close.svg";
+import Button from "../Button";
 
 const Category = styled.div`
   display: flex;
@@ -24,11 +25,27 @@ const ClearCategory = styled.img`
   margin-right: 6px;
 `;
 
-export default () => (
+const footerOkCancel = (
+  <>
+    <Button type="primary" styles="margin-right: 6px;">
+      Save
+    </Button>
+    <Button>Cancel</Button>
+  </>
+);
+
+const removeCategory = {
+  modalHeader: "Do you want to remove category?",
+  modalBody: `All products will be marked as "No category"`,
+  modalFooter: footerOkCancel
+};
+
+export default ({ showModal }) => (
   <Wrapper>
     {mock.map((product, index) => (
       <Category key={index}>
-        <ClearCategory src={closeIcon} /> {product.category}
+        <ClearCategory src={closeIcon} onClick={showModal(removeCategory)} />
+        {product.category}
       </Category>
     ))}
   </Wrapper>

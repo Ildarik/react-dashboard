@@ -39,38 +39,23 @@ const Row = styled.div`
 `;
 
 const nameInput = <input placeholder="Name"></input>;
-const footerSave = <Button type="primary">Save</Button>;
-const footerOkCancel = (
-  <>
-    <Button type="primary" styles="margin-right: 6px;">
-      Save
-    </Button>
-    <Button>Cancel</Button>
-  </>
-);
 
 const editProduct = {
   modalHeader: "Edit product",
   modalBody: nameInput,
-  modalFooter: footerSave
-};
-
-const removeCategory = {
-  modalHeader: "Do you want to remove category?",
-  modalBody: `All products will be marked as "No category"`,
-  modalFooter: footerOkCancel
+  modalFooter: "Save"
 };
 
 const removeProduct = {
   modalBody: "Do you want to remove product id = ?",
-  modalFooter: footerOkCancel
+  modalFooter: "OkCancel"
 };
 
 export default ({ showModal }) => {
   return (
     <>
       <DataGrid>
-        <Categories />
+        <Categories showModal={showModal} />
         <Table>
           <Header>
             <Cell small>ID</Cell>
