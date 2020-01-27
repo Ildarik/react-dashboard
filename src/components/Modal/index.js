@@ -45,7 +45,7 @@ const Mask = styled.div`
   z-index: 1000;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(2px);
 `;
 
 const ModalHeader = styled.div`
@@ -53,6 +53,7 @@ const ModalHeader = styled.div`
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
   border-radius: 4px 4px 0 0;
+  font-weight: bold;
 `;
 
 const ModalBody = styled.div`
