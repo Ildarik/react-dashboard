@@ -76,7 +76,7 @@ export default props => {
               <CloseIcon src={closeIcon} onClick={hide} />
               <ModalHeader>{modalHeader}</ModalHeader>
               <ModalBody>{modalBody}</ModalBody>
-              <ModalFooter modalFooter={modalFooter} />
+              <ModalFooter closeModal={hide} modalFooter={modalFooter} />
             </Modal>
           </ClickOutside>
         </>

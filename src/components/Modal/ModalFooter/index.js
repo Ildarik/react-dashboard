@@ -13,14 +13,14 @@ const Styled = styled.div`
 
 /* For now 2 type of modal footer - with button Save or Ok/Cancel */
 
-export default ({ modalFooter }) => (
+export default ({ modalFooter, closeModal }) => (
   <Styled>
     {modalFooter === "OkCancel" ? (
       <>
         <Button type="primary" styles="margin-right: 10px">
           Ok
         </Button>
-        <Button>Cancel</Button>
+        <Button onClick={closeModal}>Cancel</Button>
       </>
     ) : (
       <Button type="primary">Save</Button>
