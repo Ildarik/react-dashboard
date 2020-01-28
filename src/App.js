@@ -44,7 +44,7 @@ export default () => {
         </Button>
       </Header>
       <DataGrid showModal={showModal} />
-      <Modal {...modalType} isShowing={isShowing} hide={toggle} />
+      <Modal {...modalType} isShowing={isShowing} toggle={toggle} />
     </div>
   );
 };

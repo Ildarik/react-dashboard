@@ -7,7 +7,7 @@ export default ({ renderTrigger, renderContent }) => {
   return (
     <>
       {renderTrigger({ onClick: toggle })}
-      {isShowing && renderContent()}
+      {renderContent({ isShowing, toggle })}
     </>
   );
 };
