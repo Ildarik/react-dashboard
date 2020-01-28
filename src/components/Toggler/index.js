@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import Modal from "../Modal";
+import useModal from "../../hooks/useModal"
 
 export default ({ children, ...rest }) => {
-  const [isShowing, setIsShowing] = useState(false);
+  const {isShowing, toggle} = useModal(false);
 
-  const show = () => setIsShowing(true);
-  const hide = () => setIsShowing(false);
+  const onClick = () => toggle();
+
 
   return (
     <>
-      {isShowing && <Modal hide={hide} {...rest} />}
-      {React.cloneElement(children, { show })}
+      {isShowing && <Modal hide={toggle} {...rest} />}
+      {React.cloneElement(children, { onClick })}
     </>
   );
 };
