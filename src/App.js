@@ -7,6 +7,7 @@ import DataGrid from "./components/DataGrid";
 import Modal from "./components/Modal";
 import useModal from "./hooks/useModal";
 import addProduct from "./components/Modals/addProduct";
+import ButtonModal from "./components/ButtonModal";
 
 const nameInput = <input placeholder="Name"></input>;
 
@@ -29,13 +30,9 @@ export default () => {
     <div className="container">
       <Header>
         <Logo />
-        <Button
-          onClick={showModal(addProduct)}
-          type="primary"
-          styles="margin: 0 12px;"
-        >
+        <ButtonModal {...addProduct} type="primary" styles="margin: 0 12px;">
           Add product
-        </Button>
+        </ButtonModal>
         <Button onClick={showModal(addCategory)} type="primary">
           Add category
         </Button>
