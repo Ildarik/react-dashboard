@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Categories from "../Categories";
-import mock from "../../mock";
+import { connect } from "react-redux";
 
-const DataGrid = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 
@@ -51,10 +51,10 @@ const removeProduct = {
   modalFooter: "OkCancel"
 };
 
-export default ({ showModal }) => {
+const DataGrid = ({ showModal, products }) => {
   return (
     <>
-      <DataGrid>
+      <Wrapper>
         <Categories showModal={showModal} />
         <Table>
           <Header>
@@ -64,7 +64,7 @@ export default ({ showModal }) => {
             <Cell>Sale</Cell>
           </Header>
 
-          {mock.map(product => (
+          {products.map(product => (
             <Row key={product.id}>
               <Cell small>{product.id}</Cell>
               <Cell>{product.name}</Cell>
@@ -81,7 +81,15 @@ export default ({ showModal }) => {
             </Row>
           ))}
         </Table>
-      </DataGrid>
+      </Wrapper>
     </>
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    products: state
+  };
+};
+
+export default connect(mapStateToProps, null)(DataGrid);

@@ -1,4 +1,7 @@
-export default [
+import { createStore } from "redux";
+import rootReducer from "../reducers";
+
+const mock = [
   {
     id: "1",
     name: "Product 1",
@@ -28,3 +31,7 @@ export default [
     sell: "2500"
   }
 ];
+
+const store = createStore(rootReducer, mock);
+
+export default store;

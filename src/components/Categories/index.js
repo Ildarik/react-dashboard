@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import mock from "../../mock";
 import closeIcon from "./close.svg";
+import { connect } from "react-redux";
 
 const Category = styled.div`
   display: flex;
@@ -30,9 +30,9 @@ const removeCategory = {
   modalFooter: "OkCancel"
 };
 
-export default ({ showModal }) => (
+const Categories = ({ showModal, products }) => (
   <Wrapper>
-    {mock.map((product, index) => (
+    {products.map((product, index) => (
       <Category key={index}>
         <ClearCategory src={closeIcon} onClick={showModal(removeCategory)} />
         {product.category}
@@ -40,3 +40,11 @@ export default ({ showModal }) => (
     ))}
   </Wrapper>
 );
+
+const mapStateToProps = state => {
+  return {
+    products: state
+  };
+};
+
+export default connect(mapStateToProps, null)(Categories);
