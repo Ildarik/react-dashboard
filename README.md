@@ -1,4 +1,4 @@
-# Fake e-commerse admin page
+# React dashboard
 
 ## Features:
 
