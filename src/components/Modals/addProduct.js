@@ -1,5 +1,5 @@
 import React from "react";
-import mock from "../../mock";
+// import mock from "../../mock";
 import styled from "styled-components";
 
 const Styled = styled.div`
@@ -20,11 +20,11 @@ const modalBody = (
   <Styled>
     <Input>
       <select>
-        {mock.map((product, index) => (
+        {/* {mock.map((product, index) => (
           <option key={index} value={`${product.category}`}>
             {product.category}
           </option>
-        ))}
+        ))} */}
       </select>
     </Input>
     <Input>
