@@ -30,11 +30,15 @@ export default () => {
     <div className="container">
       <Header>
         <Logo />
-        <Toggler {...addProduct}>
-          <Button type="primary" styles="margin: 0 12px;">
-            Add product
-          </Button>
-        </Toggler>
+
+        <Toggler
+          renderTrigger={props => (
+            <Button type="primary" styles="margin: 0 12px;" {...props}>
+              Add product
+            </Button>
+          )}
+          renderContent={props => <Modal {...addProduct} {...props} />}
+        />
         <Button onClick={showModal(addCategory)} type="primary">
           Add category
         </Button>
