@@ -65,19 +65,19 @@ const ModalBody = styled.div`
 
 
 export default props => {
-  const { isShowing, hide, modalHeader, modalBody, modalFooter } = props;
+  const { isShowing, toggle, modalHeader, modalBody, modalFooter } = props;
 
   return (
     <>
       {isShowing && (
         <>
           <Mask />
-          <ClickOutside onClickOutside={hide}>
+          <ClickOutside onClickOutside={toggle}>
             <Modal>
-              <CloseIcon src={closeIcon} onClick={hide} />
+              <CloseIcon src={closeIcon} onClick={toggle} />
               <ModalHeader>{modalHeader}</ModalHeader>
               <ModalBody>{modalBody}</ModalBody>
-              <ModalFooter closeModal={hide} modalFooter={modalFooter} />
+              <ModalFooter closeModal={toggle} modalFooter={modalFooter} />
             </Modal>
           </ClickOutside>
         </>

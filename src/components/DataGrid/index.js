@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Categories from "../Categories";
+import removeProduct from "../Modals/removeProduct";
+import editProduct from "../Modals/editProduct";
+import Toggler from "../Toggler";
+import Modal from "../Modal";
 import { useSelector } from "react-redux";
 
 const Wrapper = styled.div`
@@ -38,26 +42,13 @@ const Row = styled.div`
   }
 `;
 
-const nameInput = <input placeholder="Name"></input>;
-
-const editProduct = {
-  modalHeader: "Edit product",
-  modalBody: nameInput,
-  modalFooter: "Save"
-};
-
-const removeProduct = {
-  modalBody: "Do you want to remove product id = ?",
-  modalFooter: "OkCancel"
-};
-
-export default ({ showModal }) => {
+export default () => {
   const products = useSelector(state => state);
 
   return (
     <>
       <Wrapper>
-        <Categories showModal={showModal} />
+        <Categories />
         <Table>
           <Header>
             <Cell small>ID</Cell>
@@ -73,12 +64,22 @@ export default ({ showModal }) => {
               <Cell>{product.price}</Cell>
               <Cell>{product.sell}</Cell>
               <Cell>
-                <Button type="danger" onClick={showModal(removeProduct)}>
-                  Remove
-                </Button>
+                <Toggler
+                  renderTrigger={props => (
+                    <Button type="danger" {...props}>
+                      Remove
+                    </Button>
+                  )}
+                  renderContent={props => (
+                    <Modal {...removeProduct} {...props} />
+                  )}
+                />
               </Cell>
               <Cell>
-                <Button onClick={showModal(editProduct)}>Edit</Button>
+                <Toggler
+                  renderTrigger={props => <Button {...props}>Edit</Button>}
+                  renderContent={props => <Modal {...editProduct} {...props} />}
+                />
               </Cell>
             </Row>
           ))}

@@ -18,28 +18,13 @@ const Input = styled.div`
 const modalBody = (
   <Styled>
     <Input>
-      <select>
-        {/* {mock.map((product, index) => (
-          <option key={index} value={`${product.category}`}>
-            {product.category}
-          </option>
-        ))} */}
-      </select>
-    </Input>
-    <Input>
       <input placeholder="Name"></input>
-    </Input>
-    <Input>
-      <input placeholder="Purchase"></input>
-    </Input>
-    <Input>
-      <input placeholder="Sale"></input>
     </Input>
   </Styled>
 );
 
 export default {
-  modalHeader: "Add product",
+  modalHeader: "Add category",
   modalBody: modalBody,
   modalFooter: "Save"
 };

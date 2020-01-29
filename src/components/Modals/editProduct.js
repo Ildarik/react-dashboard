@@ -39,7 +39,7 @@ const modalBody = (
 );
 
 export default {
-  modalHeader: "Add product",
+  modalHeader: "Edit product",
   modalBody: modalBody,
   modalFooter: "Save"
 };

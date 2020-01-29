@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
+import removeCategory from "../Modals/removeCategory";
+import Modal from "../Modal";
+import Toggler from "../Toggler";
 import { useSelector } from "react-redux";
 
 const Category = styled.div`
@@ -24,23 +27,20 @@ const ClearCategory = styled.img`
   margin-right: 6px;
 `;
 
-const removeCategory = {
-  modalHeader: "Do you want to remove category?",
-  modalBody: `All products will be marked as "No category"`,
-  modalFooter: "OkCancel"
-};
-
-export default ({ showModal }) => {
+export default () => {
   const products = useSelector(state => state);
 
   return (
-    <Wrapper>
-      {products.map((product, index) => (
-        <Category key={index}>
-          <ClearCategory src={closeIcon} onClick={showModal(removeCategory)} />
-          {product.category}
-        </Category>
-      ))}
-    </Wrapper>
+   <Wrapper>
+    {products.map((product, index) => (
+      <Category key={index}>
+        <Toggler
+          renderTrigger={props => <ClearCategory src={closeIcon} {...props} />}
+          renderContent={props => <Modal {...removeCategory} {...props} />}
+        />
+        {product.category}
+      </Category>
+    ))}
+  </Wrapper>
   );
 };
