@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Categories from "../Categories";
-import { connect } from "react-redux";
 import removeProduct from "../Modals/removeProduct";
 import editProduct from "../Modals/editProduct";
 import Toggler from "../Toggler";
 import Modal from "../Modal";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,7 +42,9 @@ const Row = styled.div`
   }
 `;
 
-const DataGrid = ({ products }) => {
+export default () => {
+  const products = useSelector(state => state);
+
   return (
     <>
       <Wrapper>
@@ -86,11 +88,3 @@ const DataGrid = ({ products }) => {
     </>
   );
 };
-
-const mapStateToProps = state => {
-  return {
-    products: state
-  };
-};
-
-export default connect(mapStateToProps, null)(DataGrid);

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
-import { connect } from "react-redux";
 import removeCategory from "../Modals/removeCategory";
 import Modal from "../Modal";
 import Toggler from "../Toggler";
+import { useSelector } from "react-redux";
 
 const Category = styled.div`
   display: flex;
@@ -27,8 +27,11 @@ const ClearCategory = styled.img`
   margin-right: 6px;
 `;
 
-const Categories = ({ products }) => (
-  <Wrapper>
+export default () => {
+  const products = useSelector(state => state);
+
+  return (
+   <Wrapper>
     {products.map((product, index) => (
       <Category key={index}>
         <Toggler
@@ -39,12 +42,5 @@ const Categories = ({ products }) => (
       </Category>
     ))}
   </Wrapper>
-);
-
-const mapStateToProps = state => {
-  return {
-    products: state
-  };
+  );
 };
-
-export default connect(mapStateToProps, null)(Categories);
