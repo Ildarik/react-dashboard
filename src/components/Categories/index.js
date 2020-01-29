@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
 import { connect } from "react-redux";
+import removeCategory from "../Modals/removeCategory";
+import Modal from "../Modal";
+import Toggler from "../Toggler";
 
 const Category = styled.div`
   display: flex;
@@ -24,17 +27,14 @@ const ClearCategory = styled.img`
   margin-right: 6px;
 `;
 
-const removeCategory = {
-  modalHeader: "Do you want to remove category?",
-  modalBody: `All products will be marked as "No category"`,
-  modalFooter: "OkCancel"
-};
-
-const Categories = ({ showModal, products }) => (
+const Categories = ({ products }) => (
   <Wrapper>
     {products.map((product, index) => (
       <Category key={index}>
-        <ClearCategory src={closeIcon} onClick={showModal(removeCategory)} />
+        <Toggler
+          renderTrigger={props => <ClearCategory src={closeIcon} {...props} />}
+          renderContent={props => <Modal {...removeCategory} {...props} />}
+        />
         {product.category}
       </Category>
     ))}
