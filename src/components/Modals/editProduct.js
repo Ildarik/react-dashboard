@@ -12,6 +12,7 @@ const Input = styled.div`
 
   & * {
     min-width: 200px;
+    border: 1px solid #cccccc;
   }
 `;
 
