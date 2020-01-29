@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Category = styled.div`
   display: flex;
@@ -30,21 +30,17 @@ const removeCategory = {
   modalFooter: "OkCancel"
 };
 
-const Categories = ({ showModal, products }) => (
-  <Wrapper>
-    {products.map((product, index) => (
-      <Category key={index}>
-        <ClearCategory src={closeIcon} onClick={showModal(removeCategory)} />
-        {product.category}
-      </Category>
-    ))}
-  </Wrapper>
-);
+export default ({ showModal }) => {
+  const products = useSelector(state => state);
 
-const mapStateToProps = state => {
-  return {
-    products: state
-  };
+  return (
+    <Wrapper>
+      {products.map((product, index) => (
+        <Category key={index}>
+          <ClearCategory src={closeIcon} onClick={showModal(removeCategory)} />
+          {product.category}
+        </Category>
+      ))}
+    </Wrapper>
+  );
 };
-
-export default connect(mapStateToProps, null)(Categories);

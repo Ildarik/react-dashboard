@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Categories from "../Categories";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.div`
   display: flex;
@@ -51,7 +51,9 @@ const removeProduct = {
   modalFooter: "OkCancel"
 };
 
-const DataGrid = ({ showModal, products }) => {
+export default ({ showModal }) => {
+  const products = useSelector(state => state);
+
   return (
     <>
       <Wrapper>
@@ -85,11 +87,3 @@ const DataGrid = ({ showModal, products }) => {
     </>
   );
 };
-
-const mapStateToProps = state => {
-  return {
-    products: state
-  };
-};
-
-export default connect(mapStateToProps, null)(DataGrid);
