@@ -43,10 +43,10 @@ const Row = styled.div`
 `;
 
 export default () => {
-  const { products, visibilityFilter } = useSelector(state => state);
+  const { products, activeCategory } = useSelector(state => state);
 
-  const filteredProducts = visibilityFilter
-    ? products.filter(product => product.category === visibilityFilter)
+  const filteredProducts = activeCategory
+    ? products.filter(product => product.category === activeCategory)
     : products;
 
   return (

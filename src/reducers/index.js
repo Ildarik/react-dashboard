@@ -3,8 +3,8 @@ export default (state = {}, action) => {
     case "ADD_PRODUCT":
       return { ...state, products: [...state.products, action.product] };
 
-    case "SET_VISIBILITY_FILTER":
-      return { ...state, visibilityFilter: action.filter };
+    case "SET_ACTIVE_CATEGORY":
+      return { ...state, activeCategory: action.filter };
     // case "EDIT_PRODUCT":
     //   return state.map(todo =>
     //     todo.id === action.id ? { ...todo, completed: !todo.completed } : todo

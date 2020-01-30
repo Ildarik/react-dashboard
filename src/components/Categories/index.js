@@ -5,7 +5,7 @@ import removeCategory from "../Modals/removeCategory";
 import Modal from "../Modal";
 import Toggler from "../Toggler";
 import { useSelector, useDispatch } from "react-redux";
-import { setVisibilityFilter } from "../../actions";
+import { setActiveCategory } from "../../actions";
 
 const Category = styled.div`
   display: flex;
@@ -13,6 +13,7 @@ const Category = styled.div`
   margin: 1em 0;
   cursor: pointer;
   padding: 4px 0;
+  width: ${({ filtered }) => filtered && "bold"};
 `;
 
 const Wrapper = styled.div`
@@ -32,21 +33,21 @@ const Filter = styled.span`
 `;
 
 export default () => {
-  const categories = useSelector(state => state.categories);
+  const { categories, activeCategory } = useSelector(state => state);
 
   const dispatch = useDispatch();
 
   return (
     <Wrapper>
       {categories.map((category, index) => (
-        <Category key={index}>
+        <Category key={index} filtered={category === activeCategory}>
           <Toggler
             renderTrigger={props => (
               <ClearCategory src={closeIcon} {...props} />
             )}
             renderContent={props => <Modal {...removeCategory} {...props} />}
           />
-          <Filter onClick={() => dispatch(setVisibilityFilter(category))}>
+          <Filter onClick={() => dispatch(setActiveCategory(category))}>
             {category}
           </Filter>
         </Category>
