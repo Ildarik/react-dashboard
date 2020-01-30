@@ -20,9 +20,10 @@ const Input = styled.div`
 `;
 
 export default () => {
-  const products = useSelector(state => state);
+  const products = useSelector(state => state.products);
 
   const [formValues, setFormValues] = useState({});
+
   const handleChange = event => {
     const target = event.target;
 
@@ -45,7 +46,7 @@ export default () => {
         <Input>
           <select
             name="category"
-            value={formValues.category || ""}
+            value={formValues.category || "No category"}
             onChange={handleChange}
           >
             {products.map((product, index) => (

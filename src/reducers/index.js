@@ -1,7 +1,7 @@
-export default (state = [], action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case "ADD_PRODUCT":
-      return [...state, action.product];
+      return { ...state, products: [...state.products, action.product] };
     // case "EDIT_PRODUCT":
     //   return state.map(todo =>
     //     todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
