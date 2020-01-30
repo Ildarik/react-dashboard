@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import closeIcon from "./close.svg";
 import removeCategory from "../Modals/removeCategory";
 import Modal from "../Modal";
@@ -13,7 +13,18 @@ const Category = styled.div`
   margin: 1em 0;
   cursor: pointer;
   padding: 4px 0;
-  width: ${({ filtered }) => filtered && "bold"};
+`;
+
+const Filter = styled.span`
+  color: blue;
+  text-decoration: underline;
+  ${({ active }) =>
+    active &&
+    css`
+      cursor: auto;
+      text-decoration: none;
+      color: #444;
+    `};
 `;
 
 const Wrapper = styled.div`
@@ -27,11 +38,6 @@ const ClearCategory = styled.img`
   margin-right: 6px;
 `;
 
-const Filter = styled.span`
-  color: blue;
-  text-decoration: underline;
-`;
-
 export default () => {
   const { categories, activeCategory } = useSelector(state => state);
 
@@ -40,14 +46,17 @@ export default () => {
   return (
     <Wrapper>
       {categories.map((category, index) => (
-        <Category key={index} filtered={category === activeCategory}>
+        <Category key={index}>
           <Toggler
             renderTrigger={props => (
               <ClearCategory src={closeIcon} {...props} />
             )}
             renderContent={props => <Modal {...removeCategory} {...props} />}
           />
-          <Filter onClick={() => dispatch(setActiveCategory(category))}>
+          <Filter
+            active={category === activeCategory}
+            onClick={() => dispatch(setActiveCategory(category))}
+          >
             {category}
           </Filter>
         </Category>
