@@ -20,7 +20,7 @@ const Input = styled.div`
 `;
 
 export default () => {
-  const products = useSelector(state => state.products);
+  const { products, categories } = useSelector(state => state);
 
   const [formValues, setFormValues] = useState({});
 
@@ -49,9 +49,9 @@ export default () => {
             value={formValues.category || "No category"}
             onChange={handleChange}
           >
-            {products.map((product, index) => (
-              <option key={index} value={`${product.category}`}>
-                {product.category}
+            {categories.map((category, index) => (
+              <option key={index} value={`${category}`}>
+                {category}
               </option>
             ))}
           </select>

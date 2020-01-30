@@ -28,12 +28,11 @@ const ClearCategory = styled.img`
 `;
 
 export default () => {
-  const products = useSelector(state => state.products);
+  const categories = useSelector(state => state.categories);
 
   return (
     <Wrapper>
-      {/* TODO render only unique categories */}
-      {products.map((product, index) => (
+      {categories.map((category, index) => (
         <Category key={index}>
           <Toggler
             renderTrigger={props => (
@@ -41,7 +40,7 @@ export default () => {
             )}
             renderContent={props => <Modal {...removeCategory} {...props} />}
           />
-          {product.category}
+          {category}
         </Category>
       ))}
     </Wrapper>
