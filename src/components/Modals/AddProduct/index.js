@@ -66,8 +66,8 @@ export default () => {
         </Input>
         <Input>
           <input
-            name="purchase"
-            value={formValues.purchase || ""}
+            name="price"
+            value={formValues.price || ""}
             onChange={handleChange}
             type="text"
             placeholder="Purchase"
@@ -75,8 +75,8 @@ export default () => {
         </Input>
         <Input>
           <input
-            name="sale"
-            value={formValues.sale || ""}
+            name="sell"
+            value={formValues.sell || ""}
             onChange={handleChange}
             type="text"
             placeholder="Sale"
