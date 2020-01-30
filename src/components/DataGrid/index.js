@@ -66,7 +66,7 @@ export default () => {
               <Cell>
                 <Toggler
                   renderTrigger={props => (
-                    <Button type="danger" {...props}>
+                    <Button color="danger" {...props}>
                       Remove
                     </Button>
                   )}

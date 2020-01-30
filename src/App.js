@@ -16,7 +16,7 @@ export default () => {
         <Logo />
         <Toggler
           renderTrigger={props => (
-            <Button type="primary" styles="margin: 0 12px;" {...props}>
+            <Button color="primary" styles="margin: 0 12px;" {...props}>
               Add product
             </Button>
           )}
@@ -24,7 +24,7 @@ export default () => {
         />
         <Toggler
           renderTrigger={props => (
-            <Button type="primary" {...props}>
+            <Button color="primary" {...props}>
               Add category
             </Button>
           )}

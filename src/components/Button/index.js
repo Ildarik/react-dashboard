@@ -22,11 +22,11 @@ const Button = styled.button`
     opacity: 0.5;
   }
   ${({ styles }) => styles};
-  ${({ type }) => handleType(type)};
+  ${({ color }) => handleType(color)};
 `;
 
-export default ({ type, children, styles, onClick, ...rest }) => (
-  <Button type={type} styles={styles} onClick={onClick} {...rest}>
+export default ({ color, children, styles, onClick, ...rest }) => (
+  <Button color={color} styles={styles} onClick={onClick} {...rest}>
     {children}
   </Button>
 );
