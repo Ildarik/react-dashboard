@@ -60,9 +60,12 @@ export default ({ toggle }) => {
 
   const dispatch = useDispatch();
 
+  const allId = products.map(product => product.id);
+  const newId = Math.max(...allId) + 1;
+
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(addProduct({ id: products.length + 1, ...formValues }));
+    dispatch(addProduct({ id: newId, ...formValues }));
     toggle();
   };
 
