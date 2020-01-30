@@ -9,12 +9,13 @@ const Styled = styled.div`
 `;
 
 const Input = styled.div`
-  margin: 8px;
+  margin: 14px;
   text-align: center;
 
   & * {
     min-width: 200px;
     border: 1px solid #cccccc;
+    padding: 4px;
   }
 `;
 const modalHeader = "Add product";
