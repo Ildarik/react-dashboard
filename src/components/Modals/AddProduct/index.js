@@ -36,7 +36,7 @@ export default () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(addProduct(formValues));
+    dispatch(addProduct({ id: products.length + 1, ...formValues }));
   };
 
   return (
