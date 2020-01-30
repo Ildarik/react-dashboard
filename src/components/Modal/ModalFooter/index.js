@@ -17,13 +17,13 @@ export default ({ modalFooter, closeModal }) => (
   <Styled>
     {modalFooter === "OkCancel" ? (
       <>
-        <Button type="primary" styles="margin-right: 10px">
+        <Button color="primary" styles="margin-right: 10px">
           Ok
         </Button>
         <Button onClick={closeModal}>Cancel</Button>
       </>
     ) : (
-      <Button type="primary">Save</Button>
+      <Button type="submit" color="primary">Save</Button>
     )}
   </Styled>
 );

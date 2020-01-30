@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addProduct } from "../../../actions";
 
 const Styled = styled.div`
   display: flex;
@@ -18,25 +19,33 @@ const Input = styled.div`
   }
 `;
 
-export default props => {
+export default () => {
   const products = useSelector(state => state);
-  const [formValues, setFormValues] = useState({});
 
+  const [formValues, setFormValues] = useState({});
   const handleChange = event => {
     const target = event.target;
 
     setFormValues({
+      ...formValues,
       [target.name]: target.value
     });
   };
 
+  const dispatch = useDispatch();
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(addProduct(formValues));
+  };
+
   return (
     <Styled>
-      <form onSubmit={null}>
+      <form onSubmit={handleSubmit}>
         <Input>
           <select
             name="category"
-            value={formValues.category}
+            value={formValues.category || ""}
             onChange={handleChange}
           >
             {products.map((product, index) => (
@@ -49,16 +58,16 @@ export default props => {
         <Input>
           <input
             name="name"
-            value={formValues.name}
+            value={formValues.name || ""}
             onChange={handleChange}
             type="text"
             placeholder="Name"
-          ></input>
+          />
         </Input>
         <Input>
           <input
             name="purchase"
-            value={formValues.purchase}
+            value={formValues.purchase || ""}
             onChange={handleChange}
             type="text"
             placeholder="Purchase"
@@ -67,12 +76,13 @@ export default props => {
         <Input>
           <input
             name="sale"
-            value={formValues.sale}
+            value={formValues.sale || ""}
             onChange={handleChange}
             type="text"
             placeholder="Sale"
           ></input>
         </Input>
+        <input type="submit" value="Submit" />
       </form>
     </Styled>
   );
