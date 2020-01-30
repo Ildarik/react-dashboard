@@ -36,7 +36,8 @@ const categoriesMock = productsMock.map(product => product.category);
 
 const store = createStore(rootReducer, {
   products: productsMock,
-  categories: categoriesMock
+  categories: categoriesMock,
+  visibilityFilter: ""
 });
 
 export default store;

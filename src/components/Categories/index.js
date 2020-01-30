@@ -4,14 +4,13 @@ import closeIcon from "./close.svg";
 import removeCategory from "../Modals/removeCategory";
 import Modal from "../Modal";
 import Toggler from "../Toggler";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setVisibilityFilter } from "../../actions";
 
 const Category = styled.div`
   display: flex;
   align-items: center;
   margin: 1em 0;
-  color: blue;
-  text-decoration: underline;
   cursor: pointer;
   padding: 4px 0;
 `;
@@ -27,8 +26,15 @@ const ClearCategory = styled.img`
   margin-right: 6px;
 `;
 
+const Filter = styled.span`
+  color: blue;
+  text-decoration: underline;
+`;
+
 export default () => {
   const categories = useSelector(state => state.categories);
+
+  const dispatch = useDispatch();
 
   return (
     <Wrapper>
@@ -40,7 +46,9 @@ export default () => {
             )}
             renderContent={props => <Modal {...removeCategory} {...props} />}
           />
-          {category}
+          <Filter onClick={() => dispatch(setVisibilityFilter(category))}>
+            {category}
+          </Filter>
         </Category>
       ))}
     </Wrapper>

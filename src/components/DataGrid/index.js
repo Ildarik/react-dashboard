@@ -43,7 +43,11 @@ const Row = styled.div`
 `;
 
 export default () => {
-  const products = useSelector(state => state.products);
+  const { products, visibilityFilter } = useSelector(state => state);
+
+  const filteredProducts = visibilityFilter
+    ? products.filter(product => product.category === visibilityFilter)
+    : products;
 
   return (
     <>
@@ -57,7 +61,7 @@ export default () => {
             <Cell>Sale</Cell>
           </Header>
 
-          {products.map(product => (
+          {filteredProducts.map(product => (
             <Row key={product.id}>
               <Cell small>{product.id}</Cell>
               <Cell>{product.name}</Cell>

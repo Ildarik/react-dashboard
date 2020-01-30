@@ -22,3 +22,8 @@ export const removeCategory = category => ({
   type: "REMOVE_CATEGORY",
   category
 });
+
+export const setVisibilityFilter = filter => ({
+  type: "SET_VISIBILITY_FILTER",
+  filter
+});
