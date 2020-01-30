@@ -21,8 +21,8 @@ export default () => {
             </Button>
           )}
           renderContent={props => (
-            <Modal {...props} modalHeader="Add product" modalFooter="Save">
-              <AddProduct />
+            <Modal {...props}>
+              <AddProduct {...props} />
             </Modal>
           )}
         />

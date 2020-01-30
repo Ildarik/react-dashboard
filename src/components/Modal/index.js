@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import closeIcon from "./close.svg";
 import ClickOutside from "../ClickOutside";
-import ModalFooter from "./ModalFooter";
 
 const Modal = styled.div`
   background-clip: padding-box;
@@ -48,23 +47,8 @@ const Mask = styled.div`
   backdrop-filter: blur(2px);
 `;
 
-const ModalHeader = styled.div`
-  padding: 12px 24px;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  border-radius: 4px 4px 0 0;
-  font-weight: bold;
-`;
-
-const ModalBody = styled.div`
-  padding: 24px;
-  font-size: 14px;
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 0.65);
-`;
-
 export default props => {
-  const { isShowing, toggle, modalHeader, children, modalFooter } = props;
+  const { isShowing, toggle, children } = props;
 
   return (
     <>
@@ -74,9 +58,7 @@ export default props => {
           <ClickOutside onClickOutside={toggle}>
             <Modal>
               <CloseIcon src={closeIcon} onClick={toggle} />
-              <ModalHeader>{modalHeader}</ModalHeader>
-              <ModalBody>{children}</ModalBody>
-              <ModalFooter closeModal={toggle} modalFooter={modalFooter} />
+              {children}
             </Modal>
           </ClickOutside>
         </>
