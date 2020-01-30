@@ -20,7 +20,11 @@ export default () => {
               Add product
             </Button>
           )}
-          renderContent={AddProduct}
+          renderContent={props => (
+            <Modal {...props} modalHeader="Add product" modalFooter="Save">
+              <AddProduct />
+            </Modal>
+          )}
         />
         <Toggler
           renderTrigger={props => (

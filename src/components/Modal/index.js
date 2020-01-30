@@ -63,9 +63,8 @@ const ModalBody = styled.div`
   color: rgba(0, 0, 0, 0.65);
 `;
 
-
 export default props => {
-  const { isShowing, toggle, modalHeader, modalBody, modalFooter } = props;
+  const { isShowing, toggle, modalHeader, children, modalFooter } = props;
 
   return (
     <>
@@ -76,7 +75,7 @@ export default props => {
             <Modal>
               <CloseIcon src={closeIcon} onClick={toggle} />
               <ModalHeader>{modalHeader}</ModalHeader>
-              <ModalBody>{modalBody}</ModalBody>
+              <ModalBody>{children}</ModalBody>
               <ModalFooter closeModal={toggle} modalFooter={modalFooter} />
             </Modal>
           </ClickOutside>

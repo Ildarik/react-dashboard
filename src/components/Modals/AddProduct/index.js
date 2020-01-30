@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Modal from "../../Modal";
 import { useSelector } from "react-redux";
 
 const Styled = styled.div`
@@ -18,44 +17,63 @@ const Input = styled.div`
     padding: 4px;
   }
 `;
-const modalHeader = "Add product";
-
-const modalFooter = "Save";
-
-const modalBody = products => (
-  <Styled>
-    <form onSubmit={null}>
-      <Input>
-        <select>
-          {products.map((product, index) => (
-            <option key={index} value={`${product.category}`}>
-              {product.category}
-            </option>
-          ))}
-        </select>
-      </Input>
-      <Input>
-        <input placeholder="Name"></input>
-      </Input>
-      <Input>
-        <input placeholder="Purchase"></input>
-      </Input>
-      <Input>
-        <input placeholder="Sale"></input>
-      </Input>
-    </form>
-  </Styled>
-);
 
 export default props => {
   const products = useSelector(state => state);
+  const [formValues, setFormValues] = useState({});
+
+  const handleChange = event => {
+    const target = event.target;
+
+    setFormValues({
+      [target.name]: target.value
+    });
+  };
 
   return (
-    <Modal
-      {...props}
-      modalHeader={modalHeader}
-      modalBody={modalBody(products)}
-      modalFooter={modalFooter}
-    />
+    <Styled>
+      <form onSubmit={null}>
+        <Input>
+          <select
+            name="category"
+            value={formValues.category}
+            onChange={handleChange}
+          >
+            {products.map((product, index) => (
+              <option key={index} value={`${product.category}`}>
+                {product.category}
+              </option>
+            ))}
+          </select>
+        </Input>
+        <Input>
+          <input
+            name="name"
+            value={formValues.name}
+            onChange={handleChange}
+            type="text"
+            placeholder="Name"
+          ></input>
+        </Input>
+        <Input>
+          <input
+            name="purchase"
+            value={formValues.purchase}
+            onChange={handleChange}
+            type="text"
+            placeholder="Purchase"
+          ></input>
+        </Input>
+        <Input>
+          <input
+            name="sale"
+            value={formValues.sale}
+            onChange={handleChange}
+            type="text"
+            placeholder="Sale"
+          ></input>
+        </Input>
+      </form>
+    </Styled>
   );
 };
