@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Logo from "./components/Logo";
 import DataGrid from "./components/DataGrid";
 import Modal from "./components/Modal";
-import addProduct from "./components/Modals/addProduct";
+import AddProduct from "./components/Modals/AddProduct";
 import addCategory from "./components/Modals/addCategory";
 import Toggler from "./components/Toggler";
 
@@ -20,7 +20,7 @@ export default () => {
               Add product
             </Button>
           )}
-          renderContent={props => <Modal {...addProduct} {...props} />}
+          renderContent={AddProduct}
         />
         <Toggler
           renderTrigger={props => (
