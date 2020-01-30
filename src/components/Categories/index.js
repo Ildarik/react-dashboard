@@ -28,19 +28,22 @@ const ClearCategory = styled.img`
 `;
 
 export default () => {
-  const products = useSelector(state => state);
+  const products = useSelector(state => state.products);
 
   return (
-   <Wrapper>
-    {products.map((product, index) => (
-      <Category key={index}>
-        <Toggler
-          renderTrigger={props => <ClearCategory src={closeIcon} {...props} />}
-          renderContent={props => <Modal {...removeCategory} {...props} />}
-        />
-        {product.category}
-      </Category>
-    ))}
-  </Wrapper>
+    <Wrapper>
+      {/* TODO render only unique categories */}
+      {products.map((product, index) => (
+        <Category key={index}>
+          <Toggler
+            renderTrigger={props => (
+              <ClearCategory src={closeIcon} {...props} />
+            )}
+            renderContent={props => <Modal {...removeCategory} {...props} />}
+          />
+          {product.category}
+        </Category>
+      ))}
+    </Wrapper>
   );
 };

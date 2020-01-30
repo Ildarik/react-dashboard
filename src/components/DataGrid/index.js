@@ -43,7 +43,7 @@ const Row = styled.div`
 `;
 
 export default () => {
-  const products = useSelector(state => state);
+  const products = useSelector(state => state.products);
 
   return (
     <>

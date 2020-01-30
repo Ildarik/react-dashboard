@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 import rootReducer from "../reducers";
 
-const mock = [
+const productsMock = [
   {
     id: "1",
     name: "Product 1",
@@ -32,6 +32,11 @@ const mock = [
   }
 ];
 
-const store = createStore(rootReducer, mock);
+const categoriesMock = productsMock.map(product => product.category);
+
+const store = createStore(rootReducer, {
+  products: productsMock,
+  categories: categoriesMock
+});
 
 export default store;
