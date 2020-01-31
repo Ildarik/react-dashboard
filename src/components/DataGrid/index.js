@@ -45,9 +45,17 @@ const Row = styled.div`
 export default () => {
   const { products, activeCategory } = useSelector(state => state);
 
-  const filteredProducts = activeCategory
-    ? products.filter(product => product.category === activeCategory)
-    : products;
+  const noCategory = [null, undefined, "No category"];
+
+  const noCategoryProducts = products.filter(product =>
+    noCategory.includes(product.category)
+  );
+
+  const filteredProducts = !activeCategory
+    ? products
+    : activeCategory === "No category"
+    ? noCategoryProducts
+    : products.filter(product => product.category === activeCategory);
 
   return (
     <>

@@ -5,7 +5,7 @@ import removeCategory from "../Modals/removeCategory";
 import Modal from "../Modal";
 import Toggler from "../Toggler";
 import { useSelector, useDispatch } from "react-redux";
-import { setActiveCategory } from "../../actions";
+import { setActiveCategory, setActiveNoCategory } from "../../actions";
 
 const Category = styled.div`
   display: flex;
@@ -25,6 +25,11 @@ const Filter = styled.span`
       text-decoration: none;
       color: #444;
     `};
+  ${({ noRemoveIcon }) =>
+    noRemoveIcon &&
+    css`
+      margin-left: 24px;
+    `};
 `;
 
 const Wrapper = styled.div`
@@ -43,24 +48,36 @@ export default () => {
 
   const dispatch = useDispatch();
 
+  const noCategory = [null, undefined, "No category"];
+
   return (
     <Wrapper>
-      {categories.map((category, index) => (
-        <Category key={index}>
-          <Toggler
-            renderTrigger={props => (
-              <ClearCategory src={closeIcon} {...props} />
-            )}
-            renderContent={props => <Modal {...removeCategory} {...props} />}
-          />
-          <Filter
-            active={category === activeCategory}
-            onClick={() => dispatch(setActiveCategory(category))}
-          >
-            {category}
-          </Filter>
-        </Category>
-      ))}
+      {categories
+        .filter(category => !noCategory.includes(category))
+        .map((category, index) => (
+          <Category key={index}>
+            <Toggler
+              renderTrigger={props => (
+                <ClearCategory src={closeIcon} {...props} />
+              )}
+              renderContent={props => <Modal {...removeCategory} {...props} />}
+            />
+            <Filter
+              active={category === activeCategory}
+              onClick={() => dispatch(setActiveCategory(category))}
+            >
+              {category}
+            </Filter>
+          </Category>
+        ))}
+
+      <Filter
+        noRemoveIcon
+        active={activeCategory === "No category"}
+        onClick={() => dispatch(setActiveNoCategory())}
+      >
+        No Category
+      </Filter>
     </Wrapper>
   );
 };

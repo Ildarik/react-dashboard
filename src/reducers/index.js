@@ -11,6 +11,8 @@ export default (state = {}, action) => {
       return { ...state, categories: [...state.categories, action.category] };
     case "SET_ACTIVE_CATEGORY":
       return { ...state, activeCategory: action.filter };
+    case "SET_ACTIVE_NO_CATEGORY":
+      return { ...state, activeCategory: "No category" };
     default:
       return state;
   }

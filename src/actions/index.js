@@ -27,3 +27,7 @@ export const setActiveCategory = filter => ({
   type: "SET_ACTIVE_CATEGORY",
   filter
 });
+
+export const setActiveNoCategory = () => ({
+  type: "SET_ACTIVE_NO_CATEGORY"
+});

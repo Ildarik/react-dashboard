@@ -29,6 +29,20 @@ const productsMock = [
     category: "No category",
     price: "2200",
     sell: "2500"
+  },
+  {
+    id: "5",
+    name: "Product 5",
+    category: null,
+    price: "200",
+    sell: "500"
+  },
+  {
+    id: "6",
+    name: "Product 6",
+    category: undefined,
+    price: "20005",
+    sell: "25099"
   }
 ];
 
