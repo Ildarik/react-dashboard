@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { addProduct } from "../../../actions";
+import { editProduct } from "../../../actions";
 import Button from "../../Button";
 import { NO_CATEGORY } from "../../../constants";
 
@@ -49,8 +49,8 @@ const ModalFooter = styled.div`
   border-radius: 0 0 4px 4px;
 `;
 
-export default ({ toggle }) => {
-  const { products, categories } = useSelector(state => state);
+export default ({ toggle, product }) => {
+  const { categories } = useSelector(state => state);
 
   const [formValues, setFormValues] = useState({});
 
@@ -65,20 +65,17 @@ export default ({ toggle }) => {
 
   const dispatch = useDispatch();
 
-  const allId = products.map(product => product.id);
-  const newId = Math.max(...allId) + 1;
-
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(addProduct({ id: newId, ...formValues }));
+    dispatch(editProduct({ ...product.id, ...formValues }));
     toggle();
   };
 
-  const isFormEmpty = !Object.keys(formValues).length;
+  useEffect(() => setFormValues(product), [product]);
 
   return (
     <Styled>
-      <ModalHeader>Add product</ModalHeader>
+      <ModalHeader>Edit product</ModalHeader>
       <ModalBody>
         <form onSubmit={handleSubmit}>
           <InputWrapper>
@@ -128,12 +125,7 @@ export default ({ toggle }) => {
         </form>
       </ModalBody>
       <ModalFooter>
-        <Button
-          disabled={isFormEmpty}
-          color="primary"
-          styles={isFormEmpty && "cursor: not-allowed"}
-          onClick={handleSubmit}
-        >
+        <Button color="primary" onClick={handleSubmit}>
           Save
         </Button>
       </ModalFooter>

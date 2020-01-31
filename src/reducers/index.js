@@ -4,6 +4,15 @@ export default (state = {}, action) => {
   switch (action.type) {
     case "ADD_PRODUCT":
       return { ...state, products: [...state.products, action.product] };
+    case "EDIT_PRODUCT":
+      return {
+        ...state,
+        products: [
+          ...state.products.map(product =>
+            product.id !== action.product.id ? product : action.product
+          )
+        ]
+      };
     case "REMOVE_PRODUCT":
       return {
         ...state,

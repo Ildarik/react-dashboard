@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "../Button";
 import Categories from "../Categories";
 import RemoveProduct from "../Modals/RemoveProduct";
-import editProduct from "../Modals/editProduct";
+import EditProduct from "../Modals/EditProduct";
 import Toggler from "../Toggler";
 import Modal from "../Modal";
 import { useSelector } from "react-redux";
@@ -93,7 +93,11 @@ export default () => {
               <Cell>
                 <Toggler
                   renderTrigger={props => <Button {...props}>Edit</Button>}
-                  renderContent={props => <Modal {...editProduct} {...props} />}
+                  renderContent={props => (
+                    <Modal {...props}>
+                      <EditProduct product={product} {...props} />
+                    </Modal>
+                  )}
                 />
               </Cell>
             </Row>
