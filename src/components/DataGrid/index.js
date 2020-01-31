@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../Button";
 import Categories from "../Categories";
-import removeProduct from "../Modals/removeProduct";
+import RemoveProduct from "../Modals/RemoveProduct";
 import editProduct from "../Modals/editProduct";
 import Toggler from "../Toggler";
 import Modal from "../Modal";
@@ -75,7 +75,9 @@ export default () => {
                     </Button>
                   )}
                   renderContent={props => (
-                    <Modal {...removeProduct} {...props} />
+                    <Modal {...props}>
+                      <RemoveProduct productId={product.id} {...props} />
+                    </Modal>
                   )}
                 />
               </Cell>
