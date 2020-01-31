@@ -9,7 +9,7 @@ export default (state = {}, action) => {
         ...state,
         products: [
           ...state.products.map(product =>
-            product.id !== action.product.id ? product : action.product
+            product.id === action.product.id ? action.product : product
           )
         ]
       };
