@@ -19,6 +19,7 @@ const Category = styled.div`
 const Filter = styled.span`
   color: blue;
   text-decoration: underline;
+  cursor: pointer;
   ${({ active }) =>
     active &&
     css`
