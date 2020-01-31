@@ -35,7 +35,7 @@ export default (state = {}, action) => {
           state.activeCategory === action.category ? "" : state.activeCategory
       };
     case "SET_ACTIVE_CATEGORY":
-      return { ...state, activeCategory: NO_CATEGORY };
+      return { ...state, activeCategory: action.filter };
     case "SET_ACTIVE_NO_CATEGORY":
       return { ...state, activeCategory: NO_CATEGORY };
     default:
