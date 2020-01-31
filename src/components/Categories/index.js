@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import closeIcon from "./close.svg";
-import removeCategory from "../Modals/removeCategory";
+import RemoveCategory from "../Modals/RemoveCategory";
 import Modal from "../Modal";
 import Toggler from "../Toggler";
 import { useSelector, useDispatch } from "react-redux";
@@ -60,7 +60,11 @@ export default () => {
               renderTrigger={props => (
                 <ClearCategory src={closeIcon} {...props} />
               )}
-              renderContent={props => <Modal {...removeCategory} {...props} />}
+              renderContent={props => (
+                <Modal {...props}>
+                  <RemoveCategory category={category} {...props} />
+                </Modal>
+              )}
             />
             <Filter
               active={category === activeCategory}

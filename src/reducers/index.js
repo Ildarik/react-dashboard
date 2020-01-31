@@ -9,6 +9,18 @@ export default (state = {}, action) => {
       };
     case "ADD_CATEGORY":
       return { ...state, categories: [...state.categories, action.category] };
+    case "REMOVE_CATEGORY":
+      return {
+        ...state,
+        products: state.products.map(product =>
+          product.category === action.category
+            ? { ...product, category: "No category" }
+            : product
+        ),
+        categories: state.categories.filter(
+          category => category !== action.category
+        )
+      };
     case "SET_ACTIVE_CATEGORY":
       return { ...state, activeCategory: action.filter };
     case "SET_ACTIVE_NO_CATEGORY":

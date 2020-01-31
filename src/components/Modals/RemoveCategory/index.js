@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { removeProduct } from "../../../actions";
+import { removeCategory } from "../../../actions";
 import Button from "../../Button";
 
 const Styled = styled.div`
@@ -9,8 +9,16 @@ const Styled = styled.div`
   flex-direction: column;
 `;
 
+const ModalHeader = styled.div`
+  padding: 12px 24px;
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 4px 4px 0 0;
+  font-weight: bold;
+`;
+
 const ModalBody = styled.div`
-  margin-top: 24px;
+  margin: 24px 0;
   padding: 24px;
   font-size: 16px;
   line-height: 1.5;
@@ -27,17 +35,18 @@ const ModalFooter = styled.div`
   border-radius: 0 0 4px 4px;
 `;
 
-export default ({ toggle, productId }) => {
+export default ({ toggle, category }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    dispatch(removeProduct(productId));
+    dispatch(removeCategory(category));
     toggle();
   };
 
   return (
     <Styled>
-      <ModalBody>Are you sure to remove product {productId}?</ModalBody>
+      <ModalHeader>Do you want to remove category {category}?</ModalHeader>
+      <ModalBody>All products will be marked as "No category"</ModalBody>
       <ModalFooter>
         <Button color="primary" styles="margin: 0 12px;" onClick={handleSubmit}>
           Yes
