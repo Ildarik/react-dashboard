@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const Table = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
+  margin-left: ${({ noCategories }) => (noCategories ? "140px" : "40px")};
 `;
 
 const Cell = styled.div`
@@ -44,7 +44,7 @@ const Row = styled.div`
 `;
 
 export default () => {
-  const { products, activeCategory } = useSelector(state => state);
+  const { products, activeCategory, categories } = useSelector(state => state);
 
   const noCategory = [null, undefined, NO_CATEGORY];
 
@@ -58,11 +58,15 @@ export default () => {
     ? noCategoryProducts
     : products.filter(product => product.category === activeCategory);
 
+  const noCategories =
+    categories.length === noCategory.length &&
+    categories.every(value => noCategory.includes(value));
+
   return (
     <>
       <Wrapper>
         <Categories />
-        <Table>
+        <Table noCategories={noCategories}>
           <Header>
             <Cell small>ID</Cell>
             <Cell>Name</Cell>
