@@ -30,7 +30,7 @@ const ModalHeader = styled.div`
   background: #fff;
   border-bottom: 1px solid #e8e8e8;
   border-radius: 4px 4px 0 0;
-  font-weight: bold;
+  font-size: 18px;
 `;
 
 const ModalBody = styled.div`

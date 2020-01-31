@@ -26,7 +26,7 @@ const CloseIcon = styled.img`
   position: absolute;
   top: 14px;
   right: 10px;
-  width: 16px;
+  width: 14px;
   margin-right: 6px;
 
   &:hover {
