@@ -6,7 +6,7 @@ import Logo from "./components/Logo";
 import DataGrid from "./components/DataGrid";
 import Modal from "./components/Modal";
 import AddProduct from "./components/Modals/AddProduct";
-import addCategory from "./components/Modals/addCategory";
+import AddCategory from "./components/Modals/AddCategory/";
 import Toggler from "./components/Toggler";
 
 export default () => {
@@ -32,7 +32,11 @@ export default () => {
               Add category
             </Button>
           )}
-          renderContent={props => <Modal {...addCategory} {...props} />}
+          renderContent={props => (
+            <Modal {...props}>
+              <AddCategory {...props} />
+            </Modal>
+          )}
         />
       </Header>
       <DataGrid />

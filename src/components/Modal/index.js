@@ -9,7 +9,6 @@ const Modal = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   pointer-events: auto;
   min-width: 350px;
-  min-height: 250px;
   background-color: #fff;
   border: 0 solid rgba(0, 0, 0, 0.65);
   position: fixed;
