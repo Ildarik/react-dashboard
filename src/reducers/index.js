@@ -1,3 +1,5 @@
+import { NO_CATEGORY } from "../constants";
+
 export default (state = {}, action) => {
   switch (action.type) {
     case "ADD_PRODUCT":
@@ -14,7 +16,7 @@ export default (state = {}, action) => {
         ...state,
         products: state.products.map(product =>
           product.category === action.category
-            ? { ...product, category: "No category" }
+            ? { ...product, category: NO_CATEGORY }
             : product
         ),
         categories: state.categories.filter(
@@ -24,9 +26,9 @@ export default (state = {}, action) => {
           state.activeCategory === action.category ? "" : state.activeCategory
       };
     case "SET_ACTIVE_CATEGORY":
-      return { ...state, activeCategory: action.filter };
+      return { ...state, activeCategory: NO_CATEGORY };
     case "SET_ACTIVE_NO_CATEGORY":
-      return { ...state, activeCategory: "No category" };
+      return { ...state, activeCategory: NO_CATEGORY };
     default:
       return state;
   }

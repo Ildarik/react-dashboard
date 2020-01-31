@@ -1,5 +1,6 @@
 import { createStore } from "redux";
 import rootReducer from "../reducers";
+import { NO_CATEGORY } from "../constants";
 
 const productsMock = [
   {
@@ -26,7 +27,7 @@ const productsMock = [
   {
     id: "4",
     name: "Product 4",
-    category: "No category",
+    category: NO_CATEGORY,
     price: "2200",
     sell: "2500"
   },

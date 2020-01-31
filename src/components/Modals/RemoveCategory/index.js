@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { removeCategory } from "../../../actions";
 import Button from "../../Button";
+import { NO_CATEGORY } from "../../../constants";
 
 const Styled = styled.div`
   display: flex;
@@ -46,7 +47,7 @@ export default ({ toggle, category }) => {
   return (
     <Styled>
       <ModalHeader>Do you want to remove category {category}?</ModalHeader>
-      <ModalBody>All products will be marked as "No category"</ModalBody>
+      <ModalBody>All products will be marked as "{NO_CATEGORY}"</ModalBody>
       <ModalFooter>
         <Button color="primary" styles="margin: 0 12px;" onClick={handleSubmit}>
           Yes

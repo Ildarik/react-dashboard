@@ -6,6 +6,7 @@ import Modal from "../Modal";
 import Toggler from "../Toggler";
 import { useSelector, useDispatch } from "react-redux";
 import { setActiveCategory, setActiveNoCategory } from "../../actions";
+import { NO_CATEGORY } from "../../constants";
 
 const Category = styled.div`
   display: flex;
@@ -48,7 +49,7 @@ export default () => {
 
   const dispatch = useDispatch();
 
-  const noCategory = [null, undefined, "No category"];
+  const noCategory = [null, undefined, NO_CATEGORY];
 
   return (
     <Wrapper>
@@ -80,10 +81,10 @@ export default () => {
       ) && (
         <Filter
           noRemoveIcon
-          active={activeCategory === "No category"}
+          active={activeCategory === NO_CATEGORY}
           onClick={() => dispatch(setActiveNoCategory())}
         >
-          No Category
+          {NO_CATEGORY}
         </Filter>
       )}
     </Wrapper>

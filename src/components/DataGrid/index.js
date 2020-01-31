@@ -7,6 +7,7 @@ import editProduct from "../Modals/editProduct";
 import Toggler from "../Toggler";
 import Modal from "../Modal";
 import { useSelector } from "react-redux";
+import { NO_CATEGORY } from "../../constants";
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,7 +46,7 @@ const Row = styled.div`
 export default () => {
   const { products, activeCategory } = useSelector(state => state);
 
-  const noCategory = [null, undefined, "No category"];
+  const noCategory = [null, undefined, NO_CATEGORY];
 
   const noCategoryProducts = products.filter(product =>
     noCategory.includes(product.category)
@@ -53,7 +54,7 @@ export default () => {
 
   const filteredProducts = !activeCategory
     ? products
-    : activeCategory === "No category"
+    : activeCategory === NO_CATEGORY
     ? noCategoryProducts
     : products.filter(product => product.category === activeCategory);
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "../../../actions";
 import Button from "../../Button";
+import { NO_CATEGORY } from "../../../constants";
 
 const Styled = styled.div`
   display: flex;
@@ -84,7 +85,7 @@ export default ({ toggle }) => {
             <select
               style={{ borderRadius: 2 }}
               name="category"
-              value={formValues.category || "No category"}
+              value={formValues.category || NO_CATEGORY}
               onChange={handleChange}
             >
               {categories.map((category, index) => (
