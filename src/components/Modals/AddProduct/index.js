@@ -9,7 +9,7 @@ const Styled = styled.div`
   flex-direction: column;
 `;
 
-const Input = styled.div`
+const InputWrapper = styled.div`
   margin: 14px;
   text-align: center;
 
@@ -18,6 +18,10 @@ const Input = styled.div`
     border: 1px solid #cccccc;
     padding: 4px;
   }
+`;
+
+const Input = styled.input`
+  border-radius: 2px;
 `;
 
 const ModalHeader = styled.div`
@@ -76,8 +80,9 @@ export default ({ toggle }) => {
       <ModalHeader>Add product</ModalHeader>
       <ModalBody>
         <form onSubmit={handleSubmit}>
-          <Input>
+          <InputWrapper>
             <select
+              style={{ borderRadius: 2 }}
               name="category"
               value={formValues.category || "No category"}
               onChange={handleChange}
@@ -88,34 +93,34 @@ export default ({ toggle }) => {
                 </option>
               ))}
             </select>
-          </Input>
-          <Input>
-            <input
+          </InputWrapper>
+          <InputWrapper>
+            <Input
               name="name"
               value={formValues.name || ""}
               onChange={handleChange}
               type="text"
               placeholder="Name"
             />
-          </Input>
-          <Input>
-            <input
+          </InputWrapper>
+          <InputWrapper>
+            <Input
               name="price"
               value={formValues.price || ""}
               onChange={handleChange}
               type="text"
               placeholder="Purchase"
-            ></input>
-          </Input>
-          <Input>
-            <input
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <Input
               name="sell"
               value={formValues.sell || ""}
               onChange={handleChange}
               type="text"
               placeholder="Sale"
-            ></input>
-          </Input>
+            />
+          </InputWrapper>
         </form>
       </ModalBody>
       <ModalFooter>
