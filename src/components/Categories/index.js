@@ -74,14 +74,18 @@ export default () => {
             </Filter>
           </Category>
         ))}
-
-      <Filter
-        noRemoveIcon
-        active={activeCategory === "No category"}
-        onClick={() => dispatch(setActiveNoCategory())}
-      >
-        No Category
-      </Filter>
+      {!(
+        categories.length === noCategory.length &&
+        categories.every(value => noCategory.includes(value))
+      ) && (
+        <Filter
+          noRemoveIcon
+          active={activeCategory === "No category"}
+          onClick={() => dispatch(setActiveNoCategory())}
+        >
+          No Category
+        </Filter>
+      )}
     </Wrapper>
   );
 };
