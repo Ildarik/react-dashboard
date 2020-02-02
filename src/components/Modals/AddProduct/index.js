@@ -10,7 +10,7 @@ import {
   ModalFooter,
   InputWrapper,
   Input
-} from "../../Modal/styled";
+} from "../styled";
 
 export default ({ toggle }) => {
   const { products, categories } = useSelector(state => state);
