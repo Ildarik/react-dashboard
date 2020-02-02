@@ -63,7 +63,7 @@ export default () => {
                 <ClearCategory src={closeIcon} {...props} />
               )}
               renderContent={props => (
-                <Modal {...props}>
+                <Modal {...props} longerHeader>
                   <RemoveCategory category={category} {...props} />
                 </Modal>
               )}

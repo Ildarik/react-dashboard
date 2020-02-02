@@ -8,7 +8,7 @@ const Modal = styled.div`
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   pointer-events: auto;
-  min-width: 350px;
+  min-width: ${({ longerHeader }) => (longerHeader ? "420px" : "350px")};
   background-color: #fff;
   border: 0 solid rgba(0, 0, 0, 0.65);
   position: fixed;
@@ -47,7 +47,7 @@ const Mask = styled.div`
 `;
 
 export default props => {
-  const { isShowing, toggle, children } = props;
+  const { isShowing, toggle, children, longerHeader } = props;
 
   return (
     <>
@@ -55,7 +55,7 @@ export default props => {
         <>
           <Mask />
           <ClickOutside onClickOutside={toggle}>
-            <Modal>
+            <Modal longerHeader={longerHeader}>
               <CloseIcon src={closeIcon} onClick={toggle} />
               {children}
             </Modal>
