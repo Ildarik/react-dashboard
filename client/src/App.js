@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Button from "./components/Button";
 import Header from "./components/Header";
@@ -8,8 +8,17 @@ import Modal from "./components/Modal";
 import AddProduct from "./components/Modals/AddProduct";
 import AddCategory from "./components/Modals/AddCategory/";
 import Toggler from "./components/Toggler";
+import { fetchProducts } from "./actions";
+import { useDispatch } from "react-redux";
 
 export default () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchAPI = () => dispatch(fetchProducts());
+    fetchAPI();
+  }, [dispatch]);
+
   return (
     <div className="container">
       <Header>

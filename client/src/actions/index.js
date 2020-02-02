@@ -31,3 +31,30 @@ export const setActiveCategory = filter => ({
 export const setActiveNoCategory = () => ({
   type: "SET_ACTIVE_NO_CATEGORY"
 });
+
+export const setProducts = products => ({
+  type: "SET_PRODUCTS",
+  products
+});
+
+export const fetchProducts = () => {
+  return async dispatch => {
+    try {
+      const response = await fetch("http://localhost:5000/api/products");
+
+      const res = await handleErrors(response);
+      const json = await res.json();
+      dispatch(setProducts(json.products));
+      return json.products;
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+};
+
+const handleErrors = response => {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+};

@@ -1,6 +1,12 @@
 import { NO_CATEGORY } from "../constants";
 
-export default (state = {}, action) => {
+const initialState = {
+  products: [],
+  categories: [],
+  activeCategory: ""
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case "ADD_PRODUCT":
       return { ...state, products: [...state.products, action.product] };
@@ -38,6 +44,11 @@ export default (state = {}, action) => {
       return { ...state, activeCategory: action.filter };
     case "SET_ACTIVE_NO_CATEGORY":
       return { ...state, activeCategory: NO_CATEGORY };
+    case "SET_PRODUCTS":
+      return {
+        ...state,
+        products: action.products
+      };
     default:
       return state;
   }
