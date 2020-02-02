@@ -26,13 +26,16 @@ export const ModalHeader = styled.div`
   border-bottom: 1px solid #e8e8e8;
   border-radius: 4px 4px 0 0;
   font-size: 18px;
+  line-height: 21px;
 `;
 
 export const ModalBody = styled.div`
   padding: 24px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.65);
+  text-align: center;
+  ${({ styles }) => styles};
 `;
 
 export const ModalFooter = styled.div`
