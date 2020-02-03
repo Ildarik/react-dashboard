@@ -1,8 +1,3 @@
-export const addProduct = product => ({
-  type: "ADD_PRODUCT",
-  product
-});
-
 export const editProduct = product => ({
   type: "EDIT_PRODUCT",
   product
@@ -53,6 +48,20 @@ export const getProducts = () => {
       const json = await res.json();
       dispatch(setProducts(json.products));
       return json.products;
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+};
+
+export const addProduct = product => {
+  return async () => {
+    try {
+      return await fetch(`${API_HOST}/products`, {
+        method: "POST",
+        header: { "Content-Type": "application/json" },
+        body: JSON.stringify(product)
+      });
     } catch (error) {
       return console.error(error);
     }
