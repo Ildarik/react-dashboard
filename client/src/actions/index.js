@@ -8,11 +8,6 @@ export const removeProduct = id => ({
   id
 });
 
-export const addCategory = category => ({
-  type: "ADD_CATEGORY",
-  category
-});
-
 export const removeCategory = category => ({
   type: "REMOVE_CATEGORY",
   category
@@ -77,6 +72,20 @@ export const getCategories = () => {
       const json = await res.json();
       dispatch(setCategories(json.categories));
       return;
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+};
+
+export const addCategory = category => {
+  return async dispatch => {
+    try {
+      return await fetch(`${API_HOST}/categories`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({category})
+      }).then(dispatch(getCategories()));
     } catch (error) {
       return console.error(error);
     }

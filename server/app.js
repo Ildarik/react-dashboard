@@ -28,6 +28,11 @@ app.get("/api/categories", (req, res) => {
   });
 });
 
+app.post("/api/categories", (req, res) => {
+  db.categories.push(req.body.category);
+  res.status(200).send("Success!");
+});
+
 const PORT = 5000;
 
 app.listen(PORT, () => {
