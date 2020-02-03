@@ -44,7 +44,7 @@ export const setCategories = categories => ({
 
 const API_HOST = "http://localhost:5000/api";
 
-export const fetchProducts = () => {
+export const getProducts = () => {
   return async dispatch => {
     try {
       const response = await fetch(`${API_HOST}/products`);
@@ -59,7 +59,7 @@ export const fetchProducts = () => {
   };
 };
 
-export const fetchCategories = () => {
+export const getCategories = () => {
   return async dispatch => {
     try {
       const response = await fetch(`${API_HOST}/categories`);
