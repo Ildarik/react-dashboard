@@ -8,14 +8,17 @@ import Modal from "./components/Modal";
 import AddProduct from "./components/Modals/AddProduct";
 import AddCategory from "./components/Modals/AddCategory/";
 import Toggler from "./components/Toggler";
-import { fetchProducts } from "./actions";
+import { fetchProducts, fetchCategories } from "./actions";
 import { useDispatch } from "react-redux";
 
 export default () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchAPI = () => dispatch(fetchProducts());
+    const fetchAPI = () => {
+      dispatch(fetchProducts());
+      dispatch(fetchCategories());
+    };
     fetchAPI();
   }, [dispatch]);
 

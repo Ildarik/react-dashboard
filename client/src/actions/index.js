@@ -37,15 +37,37 @@ export const setProducts = products => ({
   products
 });
 
+export const setCategories = categories => ({
+  type: "SET_CATEGORIES",
+  categories
+});
+
+const API_HOST = "http://localhost:5000/api";
+
 export const fetchProducts = () => {
   return async dispatch => {
     try {
-      const response = await fetch("http://localhost:5000/api/products");
+      const response = await fetch(`${API_HOST}/products`);
 
       const res = await handleErrors(response);
       const json = await res.json();
       dispatch(setProducts(json.products));
       return json.products;
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+};
+
+export const fetchCategories = () => {
+  return async dispatch => {
+    try {
+      const response = await fetch(`${API_HOST}/categories`);
+
+      const res = await handleErrors(response);
+      const json = await res.json();
+      dispatch(setCategories(json.categories));
+      return json.categories;
     } catch (error) {
       return console.error(error);
     }

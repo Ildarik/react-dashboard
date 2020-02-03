@@ -49,6 +49,12 @@ export default (state = initialState, action) => {
         ...state,
         products: action.products
       };
+
+    case "SET_CATEGORIES":
+      return {
+        ...state,
+        categories: action.categories
+      };
     default:
       return state;
   }
