@@ -24,8 +24,6 @@ export const setCategories = categories => ({
 
 const API_HOST = "http://localhost:5000/api";
 
-/* PRODUCTS */
-
 export const getProducts = () => {
   return async dispatch => {
     try {
@@ -48,7 +46,7 @@ export const addProduct = product => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
-      }).then(dispatch(getProducts()));
+      }).then(() => dispatch(getProducts()));
     } catch (error) {
       return console.error(error);
     }
@@ -62,7 +60,7 @@ export const editProduct = product => {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
-      }).then(dispatch(getProducts()));
+      }).then(() => dispatch(getProducts()));
     } catch (error) {
       return console.error(error);
     }
@@ -76,14 +74,12 @@ export const removeProduct = productId => {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId })
-      }).then(dispatch(getProducts()));
+      }).then(() => dispatch(getProducts()));
     } catch (error) {
       return console.error(error);
     }
   };
 };
-
-/* CATEGORIES */
 
 export const getCategories = () => {
   return async dispatch => {
@@ -107,7 +103,7 @@ export const addCategory = category => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })
-      }).then(dispatch(getCategories()));
+      }).then(() => dispatch(getCategories()));
     } catch (error) {
       return console.error(error);
     }
