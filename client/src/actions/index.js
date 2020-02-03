@@ -1,8 +1,3 @@
-export const editProduct = product => ({
-  type: "EDIT_PRODUCT",
-  product
-});
-
 export const removeCategory = category => ({
   type: "REMOVE_CATEGORY",
   category
@@ -51,6 +46,20 @@ export const addProduct = product => {
     try {
       return await fetch(`${API_HOST}/products`, {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product)
+      }).then(dispatch(getProducts()));
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+};
+
+export const editProduct = product => {
+  return async dispatch => {
+    try {
+      return await fetch(`${API_HOST}/products`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
       }).then(dispatch(getProducts()));

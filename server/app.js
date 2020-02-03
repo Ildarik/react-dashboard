@@ -20,6 +20,14 @@ app.post("/api/products", (req, res) => {
   res.status(200).send("Success!");
 });
 
+app.put("/api/products", (req, res) => {
+  db.products.map(
+    (product, index) =>
+      product.id == req.body.id && db.products.splice(index, 1, req.body)
+  );
+  res.status(200).send("Success!");
+});
+
 app.delete("/api/products", (req, res) => {
   db.products.map(
     (product, index) =>
