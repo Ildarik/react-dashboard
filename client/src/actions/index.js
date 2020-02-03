@@ -47,7 +47,7 @@ export const getProducts = () => {
       const res = handleErrors(response);
       const json = await res.json();
       dispatch(setProducts(json.products));
-      return json.products;
+      return;
     } catch (error) {
       return console.error(error);
     }
@@ -76,7 +76,7 @@ export const getCategories = () => {
       const res = handleErrors(response);
       const json = await res.json();
       dispatch(setCategories(json.categories));
-      return json.categories;
+      return;
     } catch (error) {
       return console.error(error);
     }
