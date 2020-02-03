@@ -16,7 +16,8 @@ app.get("/api/products", (req, res) => {
 });
 
 app.post("/api/products", (req, res) => {
-  console.log(req.body);
+  db.products.push(req.body);
+  res.status(200).send("Success!");
 });
 
 app.get("/api/categories", (req, res) => {

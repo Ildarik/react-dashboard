@@ -44,7 +44,7 @@ export const getProducts = () => {
     try {
       const response = await fetch(`${API_HOST}/products`);
 
-      const res = await handleErrors(response);
+      const res = handleErrors(response);
       const json = await res.json();
       dispatch(setProducts(json.products));
       return json.products;
@@ -55,13 +55,13 @@ export const getProducts = () => {
 };
 
 export const addProduct = product => {
-  return async () => {
+  return async dispatch => {
     try {
       return await fetch(`${API_HOST}/products`, {
         method: "POST",
-        header: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
-      });
+      }).then(dispatch(getProducts()));
     } catch (error) {
       return console.error(error);
     }
@@ -73,7 +73,7 @@ export const getCategories = () => {
     try {
       const response = await fetch(`${API_HOST}/categories`);
 
-      const res = await handleErrors(response);
+      const res = handleErrors(response);
       const json = await res.json();
       dispatch(setCategories(json.categories));
       return json.categories;
