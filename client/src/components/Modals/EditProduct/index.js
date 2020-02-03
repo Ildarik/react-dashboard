@@ -31,7 +31,7 @@ export default ({ toggle, product }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(editProduct({ id: product.id, ...formValues }));
+    dispatch(editProduct({ ...formValues }));
     toggle();
   };
 
