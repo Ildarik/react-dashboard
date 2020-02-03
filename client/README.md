@@ -6,4 +6,4 @@
 - Inspired by and.design
 - 💅Styled-components
 - React & Hooks
-- Redux (coming soon...)
+- Redux
