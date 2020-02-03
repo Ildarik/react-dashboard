@@ -20,6 +20,14 @@ app.post("/api/products", (req, res) => {
   res.status(200).send("Success!");
 });
 
+app.delete("/api/products", (req, res) => {
+  db.products.map(
+    (product, index) =>
+      product.id == req.body.productId && db.products.splice(index, 1)
+  );
+  res.status(200).send("Success!");
+});
+
 app.get("/api/categories", (req, res) => {
   res.status(200).send({
     success: "true",

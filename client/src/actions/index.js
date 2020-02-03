@@ -3,11 +3,6 @@ export const editProduct = product => ({
   product
 });
 
-export const removeProduct = id => ({
-  type: "REMOVE_PRODUCT",
-  id
-});
-
 export const removeCategory = category => ({
   type: "REMOVE_CATEGORY",
   category
@@ -33,6 +28,8 @@ export const setCategories = categories => ({
 });
 
 const API_HOST = "http://localhost:5000/api";
+
+/* PRODUCTS */
 
 export const getProducts = () => {
   return async dispatch => {
@@ -63,6 +60,22 @@ export const addProduct = product => {
   };
 };
 
+export const removeProduct = productId => {
+  return async dispatch => {
+    try {
+      return await fetch(`${API_HOST}/products`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId })
+      }).then(dispatch(getProducts()));
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+};
+
+/* CATEGORIES */
+
 export const getCategories = () => {
   return async dispatch => {
     try {
@@ -84,7 +97,7 @@ export const addCategory = category => {
       return await fetch(`${API_HOST}/categories`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({category})
+        body: JSON.stringify({ category })
       }).then(dispatch(getCategories()));
     } catch (error) {
       return console.error(error);
