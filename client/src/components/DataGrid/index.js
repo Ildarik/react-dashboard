@@ -43,6 +43,10 @@ const Row = styled.div`
   }
 `;
 
+const NoItems = styled.div`
+  margin: 50px;
+`;
+
 export default () => {
   const { products, activeCategory, categories } = useSelector(state => state);
 
@@ -62,6 +66,8 @@ export default () => {
     categories.length === noCategory.length &&
     categories.every(value => noCategory.includes(value));
 
+  const noItemsToShow = !filteredProducts.length;
+
   return (
     <>
       <Wrapper>
@@ -74,38 +80,42 @@ export default () => {
             <Cell>Sale</Cell>
           </Header>
 
-          {filteredProducts.map(product => (
-            <Row key={product.id}>
-              <Cell small>{product.id}</Cell>
-              <Cell>{product.name}</Cell>
-              <Cell>{product.price}</Cell>
-              <Cell>{product.sell}</Cell>
-              <Cell>
-                <Toggler
-                  renderTrigger={props => (
-                    <Button color="danger" {...props}>
-                      Remove
-                    </Button>
-                  )}
-                  renderContent={props => (
-                    <Modal {...props}>
-                      <RemoveProduct productId={product.id} {...props} />
-                    </Modal>
-                  )}
-                />
-              </Cell>
-              <Cell>
-                <Toggler
-                  renderTrigger={props => <Button {...props}>Edit</Button>}
-                  renderContent={props => (
-                    <Modal {...props}>
-                      <EditProduct product={product} {...props} />
-                    </Modal>
-                  )}
-                />
-              </Cell>
-            </Row>
-          ))}
+          {noItemsToShow ? (
+            <NoItems>No items</NoItems>
+          ) : (
+            filteredProducts.map(product => (
+              <Row key={product.id}>
+                <Cell small>{product.id}</Cell>
+                <Cell>{product.name}</Cell>
+                <Cell>{product.price}</Cell>
+                <Cell>{product.sell}</Cell>
+                <Cell>
+                  <Toggler
+                    renderTrigger={props => (
+                      <Button color="danger" {...props}>
+                        Remove
+                      </Button>
+                    )}
+                    renderContent={props => (
+                      <Modal {...props}>
+                        <RemoveProduct productId={product.id} {...props} />
+                      </Modal>
+                    )}
+                  />
+                </Cell>
+                <Cell>
+                  <Toggler
+                    renderTrigger={props => <Button {...props}>Edit</Button>}
+                    renderContent={props => (
+                      <Modal {...props}>
+                        <EditProduct product={product} {...props} />
+                      </Modal>
+                    )}
+                  />
+                </Cell>
+              </Row>
+            ))
+          )}
         </Table>
       </Wrapper>
     </>
