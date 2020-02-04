@@ -22,12 +22,15 @@ export const read = (req, res) => {
 };
 
 export const edit = (req, res) => {
-  Product.findByIdAndUpdate(
-    req.params.id,
-    { $set: req.body },
-    (err) => {
-      if (err) return next(err);
-      res.send("Product udpated.");
-    }
-  );
+  Product.findByIdAndUpdate(req.params.id, { $set: req.body }, err => {
+    if (err) return next(err);
+    res.send("Product udpated.");
+  });
+};
+
+export const remove = (req, res) => {
+  Product.findByIdAndRemove(req.params.id, err => {
+    if (err) return next(err);
+    res.send("Deleted successfully!");
+  });
 };

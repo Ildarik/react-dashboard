@@ -8,7 +8,11 @@ import mongoose from "mongoose";
 // Set up mongoose connection
 const mongoDB = process.env.MONGODB_URI;
 
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoDB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+});
 
 const { connection } = mongoose;
 
