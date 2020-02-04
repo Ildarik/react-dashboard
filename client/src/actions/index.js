@@ -1,8 +1,3 @@
-export const removeCategory = category => ({
-  type: "REMOVE_CATEGORY",
-  category
-});
-
 export const setActiveCategory = filter => ({
   type: "SET_ACTIVE_CATEGORY",
   filter
@@ -101,6 +96,20 @@ export const addCategory = category => {
     try {
       return await fetch(`${API_HOST}/categories`, {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ category })
+      }).then(() => dispatch(getCategories()));
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+};
+
+export const removeCategory = category => {
+  return async dispatch => {
+    try {
+      return await fetch(`${API_HOST}/categories`, {
+        method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })
       }).then(() => dispatch(getCategories()));

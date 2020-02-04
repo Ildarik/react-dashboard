@@ -49,6 +49,14 @@ app.post("/api/categories", (req, res) => {
   res.status(200).send("Success!");
 });
 
+app.delete("/api/categories", (req, res) => {
+  db.categories.map(
+    (category, index) =>
+      category == req.body.category && db.categories.splice(index, 1)
+  );
+  res.status(200).send("Success!");
+});
+
 const PORT = 5000;
 
 app.listen(PORT, () => {
