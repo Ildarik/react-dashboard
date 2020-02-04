@@ -9,9 +9,14 @@ export const create = (req, res, next) => {
   });
 
   product.save(err => {
-    if (err) {
-      return next(err);
-    }
+    if (err) return next(err);
     res.send("Product Created successfully");
+  });
+};
+
+export const read = (req, res) => {
+  Product.findById(req.params.id, (err, product) => {
+    if (err) return next(err);
+    res.send(product);
   });
 };
