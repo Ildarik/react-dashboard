@@ -2,7 +2,8 @@ import express from "express";
 import db from "./db";
 import cors from "cors";
 import "dotenv/config";
-import product from "./routes";
+import product from "./routes/product";
+import category from "./routes/category";
 import mongoose from "mongoose";
 
 // Set up mongoose connection
@@ -27,6 +28,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/products", product);
+app.use("/category", category);
 
 app.get("/api/products", (req, res) => {
   res.status(200).send({

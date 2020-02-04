@@ -10,7 +10,7 @@ export const create = (req, res, next) => {
 
   product.save(err => {
     if (err) return next(err);
-    res.send("Product Created successfully");
+    res.send("Product created successfully");
   });
 };
 
