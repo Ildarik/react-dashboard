@@ -2,6 +2,19 @@ import express from "express";
 import db from "./db";
 import cors from "cors";
 import "dotenv/config";
+import mongoose from "mongoose";
+
+// Set up mongoose connection
+const mongoDB = process.env.MONGODB_URI;
+
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const { connection } = mongoose;
+
+connection.on(
+  "error",
+  console.error.bind(console, "MongoDB connection error:")
+);
 
 const app = express();
 
