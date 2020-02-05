@@ -1,4 +1,4 @@
-import Category from "../models/category.model";
+import Category from "../models/category";
 
 export const create = (req, res, next) => {
   const product = new Category({

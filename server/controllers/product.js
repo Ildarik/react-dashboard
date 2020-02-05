@@ -1,4 +1,4 @@
-import Product from "../models/product.model";
+import Product from "../models/product";
 
 export const create = (req, res, next) => {
   const product = new Product({
