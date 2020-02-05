@@ -12,7 +12,7 @@ export const create = (req, res, next) => {
 };
 
 export const read = (req, res) => {
-  Category.findById(req.params.id, (err, product) => {
+  Category.find({}, (err, product) => {
     if (err) return next(err);
     res.send(product);
   });
