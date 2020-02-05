@@ -22,11 +22,11 @@ const API_HOST = "http://localhost:5000/api";
 export const getProducts = () => {
   return async dispatch => {
     try {
-      const response = await fetch(`${API_HOST}/products`);
-
+      const response = await fetch(`${API_HOST}/product`);
+      
       const res = handleErrors(response);
       const json = await res.json();
-      dispatch(setProducts(json.products));
+      dispatch(setProducts(json));
       return;
     } catch (error) {
       return console.error(error);
@@ -37,7 +37,7 @@ export const getProducts = () => {
 export const addProduct = product => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/products`, {
+      return await fetch(`${API_HOST}/product`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
@@ -51,7 +51,7 @@ export const addProduct = product => {
 export const editProduct = product => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/products`, {
+      return await fetch(`${API_HOST}/product`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
@@ -65,7 +65,7 @@ export const editProduct = product => {
 export const removeProduct = productId => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/products`, {
+      return await fetch(`${API_HOST}/product`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId })
@@ -79,11 +79,11 @@ export const removeProduct = productId => {
 export const getCategories = () => {
   return async dispatch => {
     try {
-      const response = await fetch(`${API_HOST}/categories`);
+      const response = await fetch(`${API_HOST}/category`);
 
       const res = handleErrors(response);
       const json = await res.json();
-      dispatch(setCategories(json.categories));
+      dispatch(setCategories(json));
       return;
     } catch (error) {
       return console.error(error);
@@ -94,7 +94,7 @@ export const getCategories = () => {
 export const addCategory = category => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/categories`, {
+      return await fetch(`${API_HOST}/category`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })
@@ -108,7 +108,7 @@ export const addCategory = category => {
 export const removeCategory = category => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/categories`, {
+      return await fetch(`${API_HOST}/category`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })

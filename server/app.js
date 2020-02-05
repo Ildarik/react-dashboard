@@ -2,9 +2,8 @@ import express from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
-import db from "./db";
-import product from "./routes/product";
-import category from "./routes/category";
+import products from "./routes/product";
+import categories from "./routes/category";
 
 const mongoDB = process.env.MONGODB_URI;
 
@@ -26,58 +25,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/product", product);
-app.use("/category", category);
-
-app.get("/api/products", (req, res) => {
-  res.status(200).send({
-    success: "true",
-    message: "products retrieved successfully",
-    products: db.products
-  });
-});
-
-app.post("/api/products", (req, res) => {
-  db.products.push(req.body);
-  res.status(200).send("Success!");
-});
-
-app.put("/api/products", (req, res) => {
-  db.products.map(
-    (product, index) =>
-      product.id == req.body.id && db.products.splice(index, 1, req.body)
-  );
-  res.status(200).send("Success!");
-});
-
-app.delete("/api/products", (req, res) => {
-  db.products.map(
-    (product, index) =>
-      product.id == req.body.productId && db.products.splice(index, 1)
-  );
-  res.status(200).send("Success!");
-});
-
-app.get("/api/categories", (req, res) => {
-  res.status(200).send({
-    success: "true",
-    message: "categories retrieved successfully",
-    categories: db.categories
-  });
-});
-
-app.post("/api/categories", (req, res) => {
-  db.categories.push(req.body.category);
-  res.status(200).send("Success!");
-});
-
-app.delete("/api/categories", (req, res) => {
-  db.categories.map(
-    (category, index) =>
-      category == req.body.category && db.categories.splice(index, 1)
-  );
-  res.status(200).send("Success!");
-});
+app.use("api/products", products);
+app.use("api/categories", categories);
 
 const PORT = 5000;
 

@@ -55,7 +55,7 @@ export default () => {
   return (
     <Wrapper>
       {categories
-        .filter(category => !noCategory.includes(category))
+        .filter(category => !noCategory.includes(category.name))
         .map((category, index) => (
           <Category key={index}>
             <Toggler
@@ -72,7 +72,7 @@ export default () => {
               active={category === activeCategory}
               onClick={() => dispatch(setActiveCategory(category))}
             >
-              {category}
+              {category.name}
             </Filter>
           </Category>
         ))}

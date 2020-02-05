@@ -84,8 +84,8 @@ export default () => {
             <NoItems>No items</NoItems>
           ) : (
             filteredProducts.map(product => (
-              <Row key={product.id}>
-                <Cell small>{product.id}</Cell>
+              <Row key={product._id}>
+                <Cell small>{product._id}</Cell>
                 <Cell>{product.name}</Cell>
                 <Cell>{product.price}</Cell>
                 <Cell>{product.sell}</Cell>
