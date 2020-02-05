@@ -1,12 +1,11 @@
 import express from "express";
-import db from "./db";
 import cors from "cors";
 import "dotenv/config";
+import mongoose from "mongoose";
+import db from "./db";
 import product from "./routes/product";
 import category from "./routes/category";
-import mongoose from "mongoose";
 
-// Set up mongoose connection
 const mongoDB = process.env.MONGODB_URI;
 
 mongoose.connect(mongoDB, {
