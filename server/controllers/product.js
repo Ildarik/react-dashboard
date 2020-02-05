@@ -15,7 +15,7 @@ export const create = (req, res, next) => {
 };
 
 export const read = (req, res) => {
-  Product.findById(req.params.id, (err, product) => {
+  Product.find({}, (err, product) => {
     if (err) return next(err);
     res.send(product);
   });
