@@ -19,11 +19,14 @@ export const setCategories = categories => ({
 
 const API_HOST = "http://localhost:5000/api";
 
+const productsEndpoint = `${API_HOST}/products`;
+const categoriesEndpoint = `${API_HOST}/categories`;
+
 export const getProducts = () => {
   return async dispatch => {
     try {
-      const response = await fetch(`${API_HOST}/product`);
-      
+      const response = await fetch(productsEndpoint);
+
       const res = handleErrors(response);
       const json = await res.json();
       dispatch(setProducts(json));
@@ -37,7 +40,7 @@ export const getProducts = () => {
 export const addProduct = product => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/product`, {
+      return await fetch(productsEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
@@ -51,7 +54,7 @@ export const addProduct = product => {
 export const editProduct = product => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/product`, {
+      return await fetch(productsEndpoint, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
@@ -65,7 +68,7 @@ export const editProduct = product => {
 export const removeProduct = productId => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/product`, {
+      return await fetch(productsEndpoint, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId })
@@ -79,7 +82,7 @@ export const removeProduct = productId => {
 export const getCategories = () => {
   return async dispatch => {
     try {
-      const response = await fetch(`${API_HOST}/category`);
+      const response = await fetch(categoriesEndpoint);
 
       const res = handleErrors(response);
       const json = await res.json();
@@ -94,7 +97,7 @@ export const getCategories = () => {
 export const addCategory = category => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/category`, {
+      return await fetch(categoriesEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })
@@ -108,7 +111,7 @@ export const addCategory = category => {
 export const removeCategory = category => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/category`, {
+      return await fetch(categoriesEndpoint, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })
