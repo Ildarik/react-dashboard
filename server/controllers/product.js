@@ -22,9 +22,9 @@ export const read = (req, res) => {
 };
 
 export const edit = (req, res) => {
-  Product.findByIdAndUpdate(req.params.id, { $set: req.body }, err => {
+  Product.findByIdAndUpdate(req.body._id, { $set: req.body }, err => {
     if (err) return next(err);
-    res.send("Product udpated.");
+    res.send("Product udpated");
   });
 };
 

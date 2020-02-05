@@ -19,7 +19,7 @@ export const read = (req, res) => {
 };
 
 export const remove = (req, res) => {
-  Category.findByIdAndRemove(req.params.id, err => {
+  Category.findByIdAndRemove(req.body._id, err => {
     if (err) return next(err);
     res.send("Deleted successfully!");
   });
