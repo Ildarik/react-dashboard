@@ -74,7 +74,6 @@ export default () => {
         <Categories />
         <Table noCategories={noCategories}>
           <Header>
-            <Cell small>ID</Cell>
             <Cell>Name</Cell>
             <Cell>Purchase</Cell>
             <Cell>Sale</Cell>
@@ -85,7 +84,6 @@ export default () => {
           ) : (
             filteredProducts.map(product => (
               <Row key={product._id}>
-                <Cell small>{product._id}</Cell>
                 <Cell>{product.name}</Cell>
                 <Cell>{product.price}</Cell>
                 <Cell>{product.sell}</Cell>
