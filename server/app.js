@@ -25,8 +25,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("api/products", products);
-app.use("api/categories", categories);
+app.use("/api/products", products);
+app.use("/api/categories", categories);
 
 const PORT = 5000;
 
