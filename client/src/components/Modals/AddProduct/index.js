@@ -13,7 +13,7 @@ import {
 } from "../styled";
 
 export default ({ toggle }) => {
-  const { products, categories } = useSelector(state => state);
+  const { categories } = useSelector(state => state);
 
   const [formValues, setFormValues] = useState({});
 
@@ -51,8 +51,8 @@ export default ({ toggle }) => {
               {categories.map(
                 (category, index) =>
                   category && (
-                    <option key={index} value={`${category}`}>
-                      {category}
+                    <option key={index} value={`${category._id}`}>
+                      {category.name}
                     </option>
                   )
               )}
