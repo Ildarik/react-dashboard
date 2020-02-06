@@ -9,13 +9,15 @@ export default ({ toggle, category }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    dispatch(removeCategory(category));
+    dispatch(removeCategory(category._id));
     toggle();
   };
 
   return (
     <ModalWrapper>
-      <ModalHeader>Are you sure to remove category {category}?</ModalHeader>
+      <ModalHeader>
+        Are you sure to remove category {category.name}?
+      </ModalHeader>
       <ModalBody styles="margin: 24px 0">
         All products will be marked as "{NO_CATEGORY}"
       </ModalBody>

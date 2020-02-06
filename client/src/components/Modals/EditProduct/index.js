@@ -52,8 +52,8 @@ export default ({ toggle, product }) => {
               {categories.map(
                 (category, index) =>
                   category && (
-                    <option key={index} value={`${category}`}>
-                      {category}
+                    <option key={index} value={`${category._id}`}>
+                      {category.name}
                     </option>
                   )
               )}

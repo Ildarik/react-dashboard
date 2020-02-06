@@ -69,8 +69,8 @@ export default () => {
               )}
             />
             <Filter
-              active={category === activeCategory}
-              onClick={() => dispatch(setActiveCategory(category))}
+              active={category._id === activeCategory}
+              onClick={() => dispatch(setActiveCategory(category._id))}
             >
               {category.name}
             </Filter>
@@ -78,7 +78,7 @@ export default () => {
         ))}
       {!(
         categories.length === noCategory.length &&
-        categories.every(value => noCategory.includes(value))
+        categories.every(category => noCategory.includes(category.name))
       ) && (
         <Filter
           noRemoveIcon
