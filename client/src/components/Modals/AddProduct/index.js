@@ -28,12 +28,9 @@ export default ({ toggle }) => {
 
   const dispatch = useDispatch();
 
-  const allId = products.map(product => product.id);
-  const newId = allId.length ? Math.max(...allId) + 1 : 1;
-
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(addProduct({ id: newId, ...formValues }));
+    dispatch(addProduct({ ...formValues }));
     toggle();
   };
 
