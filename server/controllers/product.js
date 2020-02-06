@@ -29,7 +29,7 @@ export const edit = (req, res) => {
 };
 
 export const remove = (req, res) => {
-  Product.findByIdAndRemove(req.params.id, err => {
+  Product.findByIdAndRemove(req.body.productId, err => {
     if (err) return next(err);
     res.send("Deleted successfully!");
   });

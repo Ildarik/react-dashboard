@@ -4,7 +4,7 @@ import { removeProduct } from "../../../actions";
 import Button from "../../Button";
 import { ModalWrapper, ModalBody, ModalFooter } from "../styled";
 
-export default ({ toggle, productId }) => {
+export default ({ toggle, productId, productName }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
@@ -15,7 +15,7 @@ export default ({ toggle, productId }) => {
   return (
     <ModalWrapper>
       <ModalBody styles="margin-top: 24px">
-        Are you sure to remove product {productId}?
+        Are you sure to remove product "{productName}"?
       </ModalBody>
       <ModalFooter>
         <Button color="primary" styles="margin: 0 12px;" onClick={handleSubmit}>

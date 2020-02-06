@@ -96,7 +96,7 @@ export default () => {
                     )}
                     renderContent={props => (
                       <Modal {...props}>
-                        <RemoveProduct productId={product.id} {...props} />
+                        <RemoveProduct productId={product._id} productName={product.name} {...props} />
                       </Modal>
                     )}
                   />
