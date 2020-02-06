@@ -8,5 +8,9 @@ const Logo = styled.img`
 `;
 
 export default () => {
-  return <Logo src={logo} />;
+  return (
+    <a href="/">
+      <Logo src={logo} />
+    </a>
+  );
 };
