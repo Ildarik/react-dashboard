@@ -76,10 +76,7 @@ export default () => {
             </Filter>
           </Category>
         ))}
-      {!(
-        categories.length === noCategory.length &&
-        categories.every(category => noCategory.includes(category.name))
-      ) && (
+      {!categories.every(category => noCategory.includes(category.name)) && (
         <Filter
           noRemoveIcon
           active={activeCategory === NO_CATEGORY}

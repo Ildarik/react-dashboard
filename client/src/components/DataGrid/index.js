@@ -62,9 +62,7 @@ export default () => {
     ? noCategoryProducts
     : products.filter(product => product.category === activeCategory);
 
-  const noCategories =
-    categories.length === noCategory.length &&
-    categories.every(value => noCategory.includes(value));
+  const noCategories = categories.every(value => noCategory.includes(value));
 
   const noItemsToShow = !filteredProducts.length;
 
@@ -96,7 +94,11 @@ export default () => {
                     )}
                     renderContent={props => (
                       <Modal {...props}>
-                        <RemoveProduct productId={product._id} productName={product.name} {...props} />
+                        <RemoveProduct
+                          productId={product._id}
+                          productName={product.name}
+                          {...props}
+                        />
                       </Modal>
                     )}
                   />
