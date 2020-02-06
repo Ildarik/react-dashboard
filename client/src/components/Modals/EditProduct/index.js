@@ -12,7 +12,6 @@ import {
   Input
 } from "../styled";
 
-
 export default ({ toggle, product }) => {
   const { categories } = useSelector(state => state);
 
@@ -56,6 +55,9 @@ export default ({ toggle, product }) => {
                       {category.name}
                     </option>
                   )
+              )}
+              {!formValues.category && (
+                <option value={null}>{NO_CATEGORY}</option>
               )}
             </select>
           </InputWrapper>
