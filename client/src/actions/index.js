@@ -145,11 +145,11 @@ export const login = ({ username, password }) => {
 export const register = ({ username, password }) => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/users/`, {
+      return await fetch(`${API_HOST}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
-      }).then(dispatch()); // TODO what should we do after successful registration?
+      }); // TODO what should we do after successful registration?
     } catch (error) {
       return console.error(error);
     }

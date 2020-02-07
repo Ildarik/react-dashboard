@@ -1,10 +1,16 @@
+import bcrypt from "bcrypt";
 import User from "../models/user";
 
-export const register = (req, res, next) => {
+const saltRounds = 10;
+
+export const register = async (req, res, next) => {
   const { username, password } = req.body;
+
+  const hash = await bcrypt.hash(password, saltRounds);
+
   const user = new User({
     username,
-    password
+    hash
   });
 
   user.save(err => {
@@ -16,8 +22,15 @@ export const register = (req, res, next) => {
 export const login = (req, res) => {
   const { username, password } = req.body;
 
-  User.findOne({ username, password }, (err, user) => {
+  User.findOne({ username }, async (err, user) => {
     if (err) return next(err);
-    res.send(user);
+
+    const isPasswordMatchHash = await bcrypt.compare(password, user.hash);
+
+    if (isPasswordMatchHash) {
+      res.send(user);
+    } else {
+      res.err; // TODO return correct response here!
+    }
   });
 };
