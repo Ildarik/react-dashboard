@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
@@ -15,10 +15,20 @@ import store from "./store";
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <Route exact path="/" component={App} />
-      <Route path="/register" component={Register} />
-      <Route path="/login" component={Login} />
-      <Route path="/admin" component={Admin} />
+      <Switch>
+        <Route exact path="/">
+          <App />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/admin">
+          <Admin />
+        </Route>
+      </Switch>
     </Router>
   </Provider>,
   document.getElementById("root")
