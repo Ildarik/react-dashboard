@@ -3,7 +3,8 @@ import { NO_CATEGORY } from "../constants";
 const initialState = {
   products: [],
   categories: [],
-  activeCategory: ""
+  activeCategory: "",
+  isUserAuthenticated: false
 };
 
 export default (state = initialState, action) => {
@@ -54,6 +55,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         categories: action.categories
+      };
+
+    case "SET_AUTHENTICATED":
+      return {
+        ...state,
+        isUserAuthenticated: true
       };
     default:
       return state;

@@ -17,6 +17,10 @@ export const setCategories = categories => ({
   categories
 });
 
+export const setAuthenticated = () => ({
+  type: "SET_AUTHENTICATED"
+});
+
 const API_HOST = "http://localhost:5000/api";
 
 const productsEndpoint = `${API_HOST}/products`;
@@ -116,6 +120,22 @@ export const removeCategory = category => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })
       }).then(() => dispatch(getCategories()));
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+};
+
+/* auth */
+
+export const login = ({ username, password }) => {
+  return async dispatch => {
+    try {
+      return await fetch(`${API_HOST}/users/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      }).then(dispatch(setAuthenticated()));
     } catch (error) {
       return console.error(error);
     }
