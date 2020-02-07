@@ -33,7 +33,7 @@ export default () => (
             name="password"
             value={null || ""}
             onChange={null}
-            type="text"
+            type="password"
             placeholder="password"
           />
         </InputWrapper>
@@ -42,7 +42,7 @@ export default () => (
             name="confirm"
             value={null || ""}
             onChange={null}
-            type="text"
+            type="password"
             placeholder="confirm"
           />
         </InputWrapper>

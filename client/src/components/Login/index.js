@@ -56,7 +56,7 @@ export default () => {
               name="password"
               value={formValues.password || ""}
               onChange={handleChange}
-              type="text"
+              type="password"
               placeholder="password"
             />
           </InputWrapper>
