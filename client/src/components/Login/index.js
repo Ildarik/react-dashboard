@@ -3,7 +3,7 @@ import { Input, InputWrapper } from "../Modals/styled";
 import styled from "styled-components";
 import Button from "../Button";
 import { login } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Centered = styled.div`
   display: flex;
