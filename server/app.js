@@ -4,6 +4,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import products from "./routes/product";
 import categories from "./routes/category";
+import users from "./routes/user";
 
 const mongoDB = process.env.MONGODB_URI;
 
@@ -27,6 +28,7 @@ app.use(express.json());
 
 app.use("/api/products", products);
 app.use("/api/categories", categories);
+app.use("/api/users", users);
 
 const PORT = 5000;
 
