@@ -17,8 +17,8 @@ export const setCategories = categories => ({
   categories
 });
 
-export const setAuthenticated = () => ({
-  type: "SET_AUTHENTICATED"
+export const toggleAuthentication = () => ({
+  type: "TOGGLE_AUTHENTICATION"
 });
 
 const API_HOST = "http://localhost:5000/api";
@@ -138,7 +138,7 @@ export const login = ({ username, password }) => {
       });
 
       if (response.ok) {
-        return dispatch(setAuthenticated());
+        return dispatch(toggleAuthentication());
       }
     } catch (error) {
       return console.error(error);

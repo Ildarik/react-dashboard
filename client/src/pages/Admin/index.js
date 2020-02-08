@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Logo from "../../components/Logo";
@@ -8,7 +9,7 @@ import AddProduct from "../../components/Modals/AddProduct";
 import AddCategory from "../../components/Modals/AddCategory/";
 import Toggler from "../../components/Toggler";
 import { getProducts, getCategories } from "../../actions";
-import { useDispatch } from "react-redux";
+import Logout from "../../components/Logout";
 
 export default () => {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ export default () => {
             </Modal>
           )}
         />
+        <Logout />
       </Header>
       <DataGrid />
     </div>

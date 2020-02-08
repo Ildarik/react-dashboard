@@ -57,10 +57,10 @@ export default (state = initialState, action) => {
         categories: action.categories
       };
 
-    case "SET_AUTHENTICATED":
+    case "TOGGLE_AUTHENTICATION":
       return {
         ...state,
-        isUserAuthenticated: true
+        isUserAuthenticated: !state.isUserAuthenticated
       };
     default:
       return state;
