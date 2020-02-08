@@ -135,7 +135,7 @@ export const login = ({ username, password }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
-      }).then(dispatch(setAuthenticated()));
+      }).then(() => dispatch(setAuthenticated()));
     } catch (error) {
       return console.error(error);
     }
