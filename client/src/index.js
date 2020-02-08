@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
 import App from "./App";
@@ -12,8 +12,12 @@ import Register from "./components/Register";
 
 import store from "./store";
 
-ReactDOM.render(
-  <Provider store={store}>
+const Main = () => {
+  const { isUserAuthenticated } = useSelector(state => state);
+
+  const toggleAdminLogin = isUserAuthenticated ? <Admin /> : <Login />;
+
+  return (
     <Router>
       <Switch>
         <Route exact path="/">
@@ -22,14 +26,16 @@ ReactDOM.render(
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/admin">
-          <Admin />
-        </Route>
+        <Route path="/login">{toggleAdminLogin}</Route>
+        <Route path="/admin">{toggleAdminLogin}</Route>
       </Switch>
     </Router>
+  );
+};
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Main />
   </Provider>,
   document.getElementById("root")
 );
