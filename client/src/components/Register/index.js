@@ -35,8 +35,8 @@ export default () => {
     dispatch(register({ ...formValues }));
   };
 
-  const isFormEmpty = !Object.keys(formValues).length;
-  // TODO only submit if password and confirm are the same
+  const passwordConfirmed =
+    formValues.confirm && formValues.confirm === formValues.password;
 
   return (
     <div className="container">
@@ -72,9 +72,9 @@ export default () => {
           </InputWrapper>
           <Centered>
             <Button
-              disabled={isFormEmpty}
+              disabled={!passwordConfirmed}
               color="primary"
-              styles={isFormEmpty && "cursor: not-allowed"}
+              styles={!passwordConfirmed && "cursor: not-allowed"}
               onClick={handleSubmit}
             >
               Submit
