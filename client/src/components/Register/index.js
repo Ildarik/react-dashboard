@@ -48,7 +48,7 @@ export default () => {
               name="username"
               value={formValues.username || ""}
               onChange={handleChange}
-              type="text"
+              type="email"
               placeholder="usern@me"
             />
           </InputWrapper>
