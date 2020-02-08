@@ -30,7 +30,7 @@ export const login = (req, res) => {
     if (isPasswordMatchHash) {
       res.send(user);
     } else {
-      res.err; // TODO return correct response here!
+      res.status(400).send({ error: "Wrong password" });
     }
   });
 };

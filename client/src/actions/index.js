@@ -131,11 +131,15 @@ export const removeCategory = category => {
 export const login = ({ username, password }) => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/users/login`, {
+      const response = await fetch(`${API_HOST}/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
-      }).then(() => dispatch(setAuthenticated()));
+      });
+
+      if (response.ok) {
+        return dispatch(setAuthenticated());
+      }
     } catch (error) {
       return console.error(error);
     }
