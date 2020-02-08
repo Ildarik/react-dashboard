@@ -19,7 +19,7 @@ export default () => {
 
   return (
     <Logout>
-      <a href="#" onClick={() => dispatch(toggleAuthentication())}>
+      <a href="/" onClick={() => dispatch(toggleAuthentication())}>
         Logout
       </a>
     </Logout>
