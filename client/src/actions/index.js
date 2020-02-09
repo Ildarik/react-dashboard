@@ -44,11 +44,12 @@ export const getProducts = () => {
 export const addProduct = product => {
   return async dispatch => {
     try {
-      return await fetch(productsEndpoint, {
+      await fetch(productsEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
-      }).then(() => dispatch(getProducts()));
+      });
+      dispatch(getProducts());
     } catch (error) {
       return console.error(error);
     }
@@ -58,11 +59,12 @@ export const addProduct = product => {
 export const editProduct = product => {
   return async dispatch => {
     try {
-      return await fetch(productsEndpoint, {
+      await fetch(productsEndpoint, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
-      }).then(() => dispatch(getProducts()));
+      });
+      dispatch(getProducts());
     } catch (error) {
       return console.error(error);
     }
@@ -72,11 +74,12 @@ export const editProduct = product => {
 export const removeProduct = productId => {
   return async dispatch => {
     try {
-      return await fetch(productsEndpoint, {
+      await fetch(productsEndpoint, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId })
-      }).then(() => dispatch(getProducts()));
+      });
+      dispatch(getProducts());
     } catch (error) {
       return console.error(error);
     }
@@ -101,11 +104,12 @@ export const getCategories = () => {
 export const addCategory = category => {
   return async dispatch => {
     try {
-      return await fetch(categoriesEndpoint, {
+      await fetch(categoriesEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })
-      }).then(() => dispatch(getCategories()));
+      });
+      dispatch(getCategories());
     } catch (error) {
       return console.error(error);
     }
@@ -115,18 +119,17 @@ export const addCategory = category => {
 export const removeCategory = category => {
   return async dispatch => {
     try {
-      return await fetch(categoriesEndpoint, {
+      await fetch(categoriesEndpoint, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ category })
-      }).then(() => dispatch(getCategories()));
+      });
+      dispatch(getCategories());
     } catch (error) {
       return console.error(error);
     }
   };
 };
-
-/* auth */
 
 export const login = ({ username, password }) => {
   return async dispatch => {
