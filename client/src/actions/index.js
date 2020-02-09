@@ -146,14 +146,18 @@ export const login = ({ username, password }) => {
   };
 };
 
-export const register = ({ username, password }) => {
+export const register = ({ username, password }, history) => {
   return async dispatch => {
     try {
-      return await fetch(`${API_HOST}/users`, {
+      const response = await fetch(`${API_HOST}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
-      }); // TODO what should we do after successful registration?
+      });
+      if (response.ok) {
+        dispatch(toggleAuthentication());
+        history.push("/admin");
+      }
     } catch (error) {
       return console.error(error);
     }

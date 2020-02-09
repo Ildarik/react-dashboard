@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 import { Input, InputWrapper } from "../Modals/styled";
 import Button from "../Button";
 import { register } from "../../actions";
@@ -29,10 +30,11 @@ export default () => {
   };
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(register({ ...formValues }));
+    dispatch(register({ ...formValues }, history));
   };
 
   const passwordConfirmed =

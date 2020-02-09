@@ -15,7 +15,7 @@ export const register = async (req, res, next) => {
 
   user.save(err => {
     if (err) return next(err);
-    res.send("User created successfully");
+    res.send(user);
   });
 };
 
