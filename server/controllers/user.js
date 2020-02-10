@@ -28,6 +28,7 @@ export const login = (req, res) => {
     const isPasswordMatchHash = await bcrypt.compare(password, user.hash);
 
     if (isPasswordMatchHash) {
+      req.session.username = username;
       res.send(user);
     } else {
       res.status(400).send({ error: "Wrong password" });
