@@ -6,6 +6,13 @@ const router = Router();
 router.post("/", create);
 router.get("/", read);
 router.put("/", edit);
-router.delete("/", remove);
+router.delete(
+  "/",
+  (req, res, next) => {
+    console.log(req.session.username);
+    next();
+  },
+  remove
+);
 
 export default router;
