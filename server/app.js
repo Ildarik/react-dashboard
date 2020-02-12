@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import session from "express-session";
+import path from "path";
 import products from "./routes/product";
 import categories from "./routes/category";
 import users from "./routes/user";
@@ -38,6 +39,11 @@ app.use(
 app.use("/api/products", products);
 app.use("/api/categories", categories);
 app.use("/api/users", users);
+
+app.use(express.static(path.join(__dirname, "../client/build")));
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 
 const PORT = 5000;
 
