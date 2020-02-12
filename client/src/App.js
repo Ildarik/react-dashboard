@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Stub = styled.div`
   line-height: 90vh;
@@ -20,8 +21,8 @@ export default () => {
   return (
     <div className="container">
       <Auth>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
       </Auth>
       <Stub>Here will be a public page!</Stub>
     </div>
