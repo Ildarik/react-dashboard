@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { toggleAuthentication } from "../../actions";
 
 const Logout = styled.div`
@@ -19,9 +20,9 @@ export default () => {
 
   return (
     <Logout>
-      <a href="/login" onClick={() => dispatch(toggleAuthentication())}>
+      <Link to="/login" onClick={() => dispatch(toggleAuthentication())}>
         Logout
-      </a>
+      </Link>
     </Logout>
   );
 };
