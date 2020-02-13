@@ -1,12 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-const Stub = styled.div`
-  line-height: 90vh;
-  text-align: center;
-  font-size: 24px;
-`;
+import { useSelector, useDispatch } from "react-redux";
+import { Row, Col, Card } from "antd";
+import { getProducts, getCategories } from "./actions";
 
 const Auth = styled.div`
   text-align: right;
@@ -17,14 +14,39 @@ const Auth = styled.div`
   }
 `;
 
+// TODO think about where is a better place to get products
+
 export default () => {
+  const { products } = useSelector(state => state);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchAPI = () => {
+      dispatch(getProducts());
+      dispatch(getCategories());
+    };
+    fetchAPI();
+  }, [dispatch]);
+
   return (
     <div className="container">
       <Auth>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
       </Auth>
-      <Stub>Here will be a public page!</Stub>
+      <Row gutter={[16, 16]}>
+        {products.map(product => (
+          <Col xs={24} sm={12} md={8} lg={6} key={product._id}>
+            <Card hoverable style={{ width: 240 }}>
+              <Card.Meta
+                title={product.name}
+                description={`${product.sell}$`}
+              />
+            </Card>
+          </Col>
+        ))}
+      </Row>
     </div>
   );
 };
