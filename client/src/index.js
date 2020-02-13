@@ -9,6 +9,7 @@ import "./App.css";
 import Admin from "./pages/Admin";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import "antd/dist/antd.css";
 
 import store from "./store";
 
