@@ -1,12 +1,13 @@
 FROM node:12
 
-WORKDIR /home/ildar/projects/mkdev-test-task/server
+WORKDIR /app
 
-COPY package*.json ./
+COPY . .
 
 RUN yarn
 
 COPY . .
 
 EXPOSE 8080
+
 CMD [ "node", "server.js" ]
