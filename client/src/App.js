@@ -30,6 +30,10 @@ const Filter = styled.span`
     `};
 `;
 
+const NoItems = styled.div`
+  margin: 50px;
+`;
+
 // TODO think about where is a better place to get products
 
 export default () => {
@@ -46,6 +50,20 @@ export default () => {
   }, [dispatch]);
 
   const noCategory = [null, undefined, NO_CATEGORY];
+
+  const noCategoryProducts = products.filter(product =>
+    noCategory.includes(product.category)
+  );
+
+  const filteredProducts = !activeCategory
+    ? products
+    : activeCategory === NO_CATEGORY
+    ? noCategoryProducts
+    : products.filter(product => product.category === activeCategory);
+
+  const noCategories = categories.every(value => noCategory.includes(value));
+
+  const noItemsToShow = !filteredProducts.length;
 
   return (
     <div className="container">
@@ -81,18 +99,24 @@ export default () => {
           )}
         </Col>
       </Row>
-      <Row gutter={[16, 16]} justify="center">
+      <Row gutter={[16, 16]}>
         {/* TODO add sceleton for cards */}
-        {products.map(product => (
-          <Col xs={24} sm={12} md={8} lg={6} key={product._id}>
-            <Card hoverable style={{ width: 200, background: "lightblue" }}>
-              <Card.Meta
-                title={product.name}
-                description={`${product.sell}$`}
-              />
-            </Card>
-          </Col>
-        ))}
+
+        {/* TODO center cards on small screen */}
+        {noItemsToShow ? (
+          <NoItems>No items</NoItems>
+        ) : (
+          filteredProducts.map(product => (
+            <Col xs={24} sm={12} md={8} lg={6} key={product._id}>
+              <Card hoverable style={{ width: 200, background: "lightblue" }}>
+                <Card.Meta
+                  title={product.name}
+                  description={`${product.sell}$`}
+                />
+              </Card>
+            </Col>
+          ))
+        )}
       </Row>
     </div>
   );
