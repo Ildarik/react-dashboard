@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Row, Col, Card, Checkbox } from "antd";
+import { Row, Col, Card } from "antd";
 import { getProducts, getCategories } from "./actions";
 import { setActiveCategory, setActiveNoCategory } from "./actions";
 import { NO_CATEGORY } from "./constants";
@@ -61,8 +61,6 @@ export default () => {
     ? noCategoryProducts
     : products.filter(product => product.category === activeCategory);
 
-  const noCategories = categories.every(value => noCategory.includes(value));
-
   const noItemsToShow = !filteredProducts.length;
 
   return (
@@ -71,7 +69,7 @@ export default () => {
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
       </Auth>
-      <Row gutter={[16, 16]} justify="center">
+      <Row gutter={[16, 16]}>
         <Col>
           {/* TODO DRY this - move into separate component */}
           {categories
@@ -99,15 +97,14 @@ export default () => {
           )}
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]} type="flex" justify="center">
         {/* TODO add sceleton for cards */}
 
-        {/* TODO center cards on small screen */}
         {noItemsToShow ? (
           <NoItems>No items</NoItems>
         ) : (
           filteredProducts.map(product => (
-            <Col xs={24} sm={12} md={8} lg={6} key={product._id}>
+            <Col xs={14} sm={12} md={8} lg={6} key={product._id}>
               <Card hoverable style={{ width: 200, background: "lightblue" }}>
                 <Card.Meta
                   title={product.name}
