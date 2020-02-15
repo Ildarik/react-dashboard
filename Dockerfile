@@ -4,10 +4,16 @@ WORKDIR /app
 
 COPY . .
 
+WORKDIR /app/client/
+
 RUN yarn
 
-COPY . .
+RUN yarn build
 
-EXPOSE 8080
+WORKDIR /app/server/
 
-CMD [ "node", "server.js" ]
+RUN yarn
+
+EXPOSE 80
+
+CMD [ "yarn", "start" ]
