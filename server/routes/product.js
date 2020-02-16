@@ -1,18 +1,12 @@
 import { Router } from "express";
 import { create, read, edit, remove } from "../controllers/product";
+import { checkAuth } from "../auth";
 
 const router = Router();
 
-router.post("/", create);
+router.post("/", checkAuth, create);
 router.get("/", read);
-router.put("/", edit);
-router.delete(
-  "/",
-  (req, res, next) => {
-    console.log(req.session.username);
-    next();
-  },
-  remove
-);
+router.put("/", checkAuth, edit);
+router.delete("/", checkAuth, remove);
 
 export default router;
