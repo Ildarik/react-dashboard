@@ -35,3 +35,8 @@ export const login = (req, res) => {
     }
   });
 };
+
+// TODO add logout feature - frontend component
+export const logout = (req, res) => {
+  delete req.session.username;
+};
