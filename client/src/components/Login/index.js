@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "../Button";
 import { login } from "../../actions";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Centered = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ export default () => {
   return (
     <div className="container">
       <Wrapper>
-        <h1>Login</h1>
+        <h1>Login (<Link to="/register">register</Link> first)</h1>
         <form onSubmit={null}>
           <InputWrapper>
             <Input
